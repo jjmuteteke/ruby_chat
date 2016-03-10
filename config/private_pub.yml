@@ -6,5 +6,5 @@ test:
   secret_token: "secret"
 production:
   server: "https://gentle-peak-25851.herokuapp.com/faye"
-  secret_token: "850aa8d5adbfdd9f8ef633145129cd20e8bde868c4c733e2789392324cc390ed"
+  secret_token: "2a37313ec4bc92a75a6bf11a4bd83d61b49640f9589a1125b4a1faadeecc7eb7"
   signature_expiration: 3600 # one hour
