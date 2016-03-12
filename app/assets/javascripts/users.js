@@ -9,7 +9,6 @@ var ready = function() {
 
     $('.start-conversation').click(function (e) {
      
-        window.alert(5 + 6);
         e.preventDefault();
 
         var sender_id = $(this).data('sid');
