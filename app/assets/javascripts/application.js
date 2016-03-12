@@ -17,5 +17,6 @@
 //= require jquery.cookie
 //= require private_pub
 //= require chat
+//= require users
 //= require turbolinks
-//= require_tree .
+
