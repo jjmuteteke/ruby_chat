@@ -8,8 +8,8 @@ var ready = function() {
      */
 
     $('.start-conversation').click(function (e) {
-         alert("HI");
-        /**
+     
+        
         e.preventDefault();
 
         var sender_id = $(this).data('sid');
@@ -18,7 +18,7 @@ var ready = function() {
         $.post("/conversations", { sender_id: sender_id, recipient_id: recipient_id }, function (data) {
             chatBox.chatWith(data.conversation_id);
         });
-        **/
+        
     });
     
     /**
