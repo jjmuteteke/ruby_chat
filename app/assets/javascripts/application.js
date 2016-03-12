@@ -11,12 +11,10 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap.min
 //= require jquery.cookie
 //= require private_pub
 //= require chat
-//= require users
 //= require turbolinks
-
+//= require_tree .
