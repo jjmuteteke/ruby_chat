@@ -66,7 +66,7 @@ var ready = function() {
         var conversation_id = $(this).data('cid');
         chatBox.chatWith(conversation_id);
     });
-}
+};
 
 $(document).ready(ready);
 $(document).on("page:load", ready);
