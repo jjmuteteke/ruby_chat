@@ -21,12 +21,14 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'pg'
+
 gem 'private_pub'
 gem 'thin'
 gem 'devise'
 gem 'js_cookie_rails'
 gem 'jquery-turbolinks'
+#file upload
+gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -39,6 +41,7 @@ gem 'jquery-turbolinks'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'sqlite3'
   
 end
 
@@ -54,5 +57,6 @@ end
 
 group :production do
   gem 'rails_12factor'
+  gem 'pg'
 end
 

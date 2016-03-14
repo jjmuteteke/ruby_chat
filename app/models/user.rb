@@ -8,4 +8,6 @@ class User < ActiveRecord::Base
   #a user has many conversations to we use has many to signafy one to many connection
   #foreign key links to sender
   has_many :conversations, :foreign_key => :sender_id
+  #a user can have multiple files
+  has_many :assets
 end
