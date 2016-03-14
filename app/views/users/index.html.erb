@@ -30,6 +30,8 @@
                     <ul class="dropdown-menu" role="menu">
                       <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation",
                               "data-sid" => current_user.id, "data-rip" => user.id %>
+                      <%= link_to "Send file", "#", class: "btn btn-success btn-xs start-upload",
+                              "data-sid" => current_user.id, "data-rip" => user.id %>
                     </ul>
                   </div>
                   
