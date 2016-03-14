@@ -19,6 +19,20 @@ var ready = function() {
         });
         
     });
+    /**
+     * this will be used to start the modal to ask for upload of document to send
+     * 
+     */
+     $('.start-upload').click(function (e) {
+     
+        e.preventDefault();
+
+        var sender_id = $(this).data('sid');
+        var recipient_id = $(this).data('rip');
+        
+       $('#uploadModal').modal('show');
+        
+    });
     
     /**
      * Used to minimize the chatbox
