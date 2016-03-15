@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   resources :conversations do
     resources :messages
   end
+  
+  
+  #creates routes for assets
+  resources :assets
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
