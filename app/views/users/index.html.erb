@@ -79,10 +79,21 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">Send file</h4>
       </div>
       <div class="modal-body">
-        <h4>testing testing</h4>
+        <h4>tsend file to this person</h4>
+        <%= form_for @asset, :html => {:multipart => true} do |f| %>
+          <%= f.error_messages %>
+          <p>
+            <%= f.label :uploaded_file, "File" %><br />
+            <%= f.file_field :uploaded_file %>
+          </p>
+          <p>
+            <%= f.hidden_field :folder_id %>
+          </p>
+          <p><%= f.submit "Upload" %></p>
+        <% end %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
