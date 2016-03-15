@@ -83,17 +83,7 @@
       </div>
       <div class="modal-body">
         <h4>tsend file to this person</h4>
-        <%= form_for @asset, :html => {:multipart => true} do |f| %>
-          <%= f.error_messages %>
-          <p>
-            <%= f.label :uploaded_file, "File" %><br />
-            <%= f.file_field :uploaded_file %>
-          </p>
-          <p>
-            <%= f.hidden_field :folder_id %>
-          </p>
-          <p><%= f.submit "Upload" %></p>
-        <% end %>
+        <%= render 'users/assetup' %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
