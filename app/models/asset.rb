@@ -1,6 +1,6 @@
 class Asset < ActiveRecord::Base
   belongs_to :user
-  
+  attr_accessor :user_id, :uploaded_file
   #validates that the three specific attributes ar not blank
   validates_presence_of  :user_id
   #assests have files

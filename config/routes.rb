@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  resources :assets
   devise_for :users
   #routes are used to direct urls to their specific controllers
   #this bit is from devise as it doesn't allow the user to do anything until they are authenticated
   authenticated :user do
     root 'users#index'
+      #resources :assets
+    
   end
   #prompts for new users
   unauthenticated :user do
@@ -16,9 +19,13 @@ Rails.application.routes.draw do
     resources :messages
   end
   
+  resources :groupconversations do
+    resources :groupmessages
+  end
+  
   
   #creates routes for assets
-  resources :assets
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

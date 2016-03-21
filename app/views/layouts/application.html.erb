@@ -26,7 +26,7 @@
 <body>
 
 <%= render 'layouts/navigator' %>
-
+<%= render 'layouts/side' %>
 
 <div class="container">
   <% if alert %>
@@ -36,7 +36,7 @@
       <div class="alert alert-success" role="alert"><%= notice %></div>
   <% end %>
 
-
+  <!-- this tells rails to place any of the html.erb code here-->
   <%= yield %>
 </div>
 <!--<audio id="chatAudio"><source src="/sounds/notification.mp3" type="audio/mpeg"></audio> -->

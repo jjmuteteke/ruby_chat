@@ -30,8 +30,8 @@
                     <ul class="dropdown-menu" role="menu">
                       <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation",
                               "data-sid" => current_user.id, "data-rip" => user.id %>
-                      <%= link_to "Send file", "#", class: "btn btn-success btn-xs start-upload",
-                              "data-sid" => current_user.id, "data-rip" => user.id %>
+                      
+                              
                     </ul>
                   </div>
                   
@@ -79,15 +79,33 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Send file</h4>
+        <h4 class="modal-title" id="myModalLabel">create group chat</h4>
       </div>
       <div class="modal-body">
-        <h4>tsend file to this person</h4>
+        <table class="modalTable">
+          <thead>
+         <!-- this is were u put table headers-->
+          </thead>
+          <tbody>
+            <% @users.each_with_index do |user,index| %>
+              <tr>
+                <td>
+                  <label><input type="checkbox", value=  <%= user.id %>, name="checkbox",id ="checkbox-<%= index +=1 %>" > </label>
+                </td>
+                <td>
+                  <%= user.name %>
+                </td>
+              </tr>
+            <% end %> 
+          </tbody>
+      
+          
+        </table>
        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary start-group" >Done</button>
       </div>
     </div>
   </div>

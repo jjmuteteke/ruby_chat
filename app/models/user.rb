@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
   #a user has many conversations to we use has many to signafy one to many connection
   #foreign key links to sender
   has_many :conversations, :foreign_key => :sender_id
+  
+  #this is a many to many relationship to show that a user can have multiple group chats
+  has_many :usergroups
+  has_many :groupconversations, through: :usergroups
   #a user can have multiple files
   has_many :assets
   

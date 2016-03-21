@@ -13,7 +13,13 @@ var ready = function() {
 
         var sender_id = $(this).data('sid');
         var recipient_id = $(this).data('rip');
-        
+        /**
+         * when you do a post
+         * the first url is for which table
+         * also when you do a post it calls that controllers create method
+         * in this case the create method and you see that it passes the parasmeters needed as well
+         * 
+         */
         $.post("/conversations", { sender_id: sender_id, recipient_id: recipient_id }, function (data) {
             chatBox.chatWith(data.conversation_id);
         });
@@ -27,11 +33,47 @@ var ready = function() {
      
         e.preventDefault();
 
-        var sender_id = $(this).data('sid');
-        var recipient_id = $(this).data('rip');
+        //var sender_id = $(this).data('sid');
+       // var recipient_id = $(this).data('rip');
         
        $('#uploadModal').modal('show');
         
+    });
+    /**
+     * this will get all the values that have been choosen to create group
+     * first is to gather an array of all the values because they are the user ids
+     * if the array size is 0 tell them they choose nothing
+     * if array is one it means its a regualr conversation so do like regualr conversation
+     * else its a group conversation
+     * 
+     */
+    $('.start-group').click(function (e) {
+     
+        e.preventDefault();
+
+        //var sender_id = $(this).data('sid');
+       // var recipient_id = $(this).data('rip');
+        
+      // $('#uploadModal').modal('show');
+      var checkboxName = $(":checkbox").attr('name');
+      
+      //get all checkboxes
+      var value = [];
+      $("input[name*='" + checkboxName + "']").each(function () {
+                        // Get all checked checboxes in an array
+                        if (jQuery(this).is(":checked")) {
+                            value.push($(this).val());
+                        }
+                    });
+                    
+                    //alert(value.join());
+                    
+                 
+                 
+                 $.post("/groupconversations", { sender_id: 1, groupuserarray: value }, function (data) {
+            chatBox.chatWith(data.conversation_id);
+        });
+        $('#uploadModal').modal('hide');
     });
     
     /**

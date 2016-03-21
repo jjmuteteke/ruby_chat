@@ -1,6 +1,6 @@
 class AssetsController < ApplicationController
     before_filter :authenticate_user!
-    
+    #now we can create a view for all of these
     def index 
     @assets = current_user.assets      
     end
