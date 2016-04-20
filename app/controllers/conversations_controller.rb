@@ -11,7 +11,7 @@ class ConversationsController < ApplicationController
       @conversation = Conversation.between(params[:sender_id],params[:recipient_id]).first
     else
       @conversation = Conversation.create!(conversation_params)
-      @folderobj  = S3_BUCKET.objects[params[:file].original_filename]
+      #@folderobj  = S3_BUCKET.objects[params[:file].original_filename]
     end
 
     render json: { conversation_id: @conversation.id }
