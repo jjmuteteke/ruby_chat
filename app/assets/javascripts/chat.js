@@ -16,8 +16,10 @@ var ready = function() {
          */
          
          chatWith: function (conversation_id) {
+             //alert(GrchatBoxes.length)
              chatBox.createChatBox(conversation_id)
              $("#chatbox_" + conversation_id + " .chatboxtextarea").focus();
+             
          },
          
           /**
@@ -48,6 +50,7 @@ var ready = function() {
          */
 
         restructure: function () {
+            /*
             align = 0;
             for (x in chatBoxes) {
                 chatbox_id = chatBoxes[x];
@@ -58,6 +61,32 @@ var ready = function() {
                     } else {
                         width = (align) * (280 + 7) + 20;
                         $("#chatbox_" + chatbox_id).css('right', width + 'px');
+                    }
+                    align++;
+                }
+            }
+            */
+            
+            align = 0;
+            var merger = $.merge(chatBoxes,GrchatBoxes)
+            for (x in merger) {
+                chatbox_id = merger[x];
+
+                if ($("#chatbox_" + chatbox_id).css('display') != 'none') {
+                    if (align == 0) {
+                        $("#chatbox_" + chatbox_id).css('right', '20px');
+                    } else {
+                        width = (align) * (280 + 7) + 20;
+                        $("#chatbox_" + chatbox_id).css('right', width + 'px');
+                    }
+                    align++;
+                }
+                else if ($("#gchatbox_" + chatbox_id).css('display') != 'none') {
+                    if (align == 0) {
+                        $("#gchatbox_" + chatbox_id).css('right', '20px');
+                    } else {
+                        width = (align) * (280 + 7) + 20;
+                        $("#gchatbox_" + chatbox_id).css('right', width + 'px');
                     }
                     align++;
                 }
@@ -84,6 +113,7 @@ var ready = function() {
             if ($("#chatbox_" + conversation_id).length > 0) {
                 if ($("#chatbox_" + conversation_id).css('display') == 'none') {
                     $("#chatbox_" + conversation_id).css('display', 'block');
+                    alert("yo");
                     chatBox.restructure();
                 }
                 $("#chatbox_" + conversation_id + " .chatboxtextarea").focus();

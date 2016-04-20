@@ -1,0 +1,25 @@
+{
+  "name": "ruby_chat",
+  "homepage": "https://github.com/jjmuteteke/ruby_chat",
+  "authors": [
+    "jjmuteteke <jjmuteteke@yahoo.com>"
+  ],
+  "description": "online web chat for a college course",
+  "main": "many files",
+  "keywords": [
+    "rails",
+    "web",
+    "chat",
+    "file",
+    "sharing"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/assets/components",
+    "test",
+    "tests"
+  ]
+}

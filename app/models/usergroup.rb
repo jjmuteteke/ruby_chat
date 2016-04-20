@@ -1,4 +1,4 @@
 class Usergroup < ActiveRecord::Base
-    belongs_to :users
-    belongs_to :groupconversations
+    belongs_to :user
+    belongs_to :groupconversation
 end

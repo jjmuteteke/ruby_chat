@@ -14,7 +14,18 @@ class AssetsController < ApplicationController
     end
   
     def create 
-        @asset = current_user.assets.new(params[:asset]) 
+        @assets = current_user.assets.new(asset_params)
+        @asset.user_id = current_user.id;
+        if @asset.save
+            flash[:notice] = "Successfully uploaded the file."
+            
+            redirect_to :action => :index   
+        else
+            flash[:notice] = "failed uploaded the file."
+            render :action => 'new'
+        
+        end
+      
     
     end
   
@@ -31,4 +42,9 @@ class AssetsController < ApplicationController
         @asset = current_user.assets.find(params[:id]) 
     
     end
+    
+     private
+  def asset_params
+    params.require(:asset).permit(:user_id, :uploaded_file)
+  end
 end

@@ -1,27 +1,38 @@
-<!-- this is a view from MVC that makes use of conversation controller-->
-<!-- this is used to render conversations and the like-->
+<!-- this is a view from MVC that makes use of groupconversation controller-->
+<!-- this is used to render groupconversations and the like-->
 
-<div class="chatboxhead">
-  <div class="chatboxtitle">
+<div class="gchatboxhead">
+  <div class="gchatboxtitle">
     <i class="fa fa-comments"></i>
-
-    <h1><%= @reciever.name %> </h1>
+   <% if @recievers.length ==2 %>
+     <h1><%=@recievers[0].name + " and " + @recievers[1].name %></h1>
+    <% else %>
+      <h1> <%=@recievers[0].name + " and  #{@recievers.length-1} more" %> </h1>
+    <% end %>
   </div>
-  <div class="chatboxoptions">
-    <%= link_to "<i class='fa  fa-minus'></i> ".html_safe, "#", class: "toggleChatBox", "data-cid" => @conversation.id %>
+  <div class="gchatboxoptions">
+    <input type="file" id="fileLoader" name="files" title="Load File" style = "display:none;" />
+    <%= link_to "<i class='fa fa-paperclip'></i> ".html_safe, "#", class: "guploadfile", "data-cid" => @gconversation.id %>
     &nbsp;&nbsp;
-    <%= link_to "<i class='fa  fa-times'></i> ".html_safe, "#", class: "closeChat", "data-cid" => @conversation.id %>
+     <%= link_to "<i class='fa fa-users'></i> ".html_safe, "#", class: "gaddusertoChatBox", "data-cid" => @gconversation.id %>
+    &nbsp;&nbsp;
+    <%= link_to "<i class='fa  fa-minus'></i> ".html_safe, "#", class: "gtoggleChatBox", "data-cid" => @gconversation.id %>
+    &nbsp;&nbsp;
+    <%= link_to "<i class='fa  fa-times'></i> ".html_safe, "#", class: "gcloseChat", "data-cid" => @gconversation.id %>
   </div>
 </div>
-<div class="chatboxcontent">
-  <% if @messages.any? %>
-      <%= render @messages %>
+<%= render 'groupconversations/addusers' %>
+<div class="gchatboxcontent">
+  <% if @gmessages.any? %>
+      <%= render @gmessages %>
   <% end %>
 </div>
-<div class="chatboxinput">
-  <%= form_for([@conversation, @message], :remote => true, :html => { id: "conversation_form_#{@conversation.id}"}) do |f| %>
-      <%= f.text_area :body, class: "chatboxtextarea", "data-cid" => @conversation.id %>
+<div class="gchatboxinput">
+  <%= form_for([@gconversation, @gmessage], :remote => true, :html => { id: "groupconversation_form_#{@gconversation.id}"}) do |f| %>
+      <%= f.text_area :body, class: "gchatboxtextarea", "data-cid" => @gconversation.id %>
   <% end %>
 </div>
+
+
 <!--this subscribe to is used so that we can see and view messages sent allong this conversation path -->
-<%= subscribe_to conversation_path(@conversation) %>
+<%= subscribe_to groupconversation_path(@gconversation) %>

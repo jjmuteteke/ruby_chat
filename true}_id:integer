@@ -1,0 +1,2 @@
+      invoke  active_record
+      create    db/migrate/20160321145341_remove_field_name_from_groupconversations.rb

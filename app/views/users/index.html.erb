@@ -49,7 +49,48 @@
     <h3>Your Conversations</h3>
 
     <div style="height: 400px; overflow-y: auto;">
-      <% if @conversations.any? %>
+      <% if @conversations.any? and @groupconversations.any? %>
+          <ul class="media-list">
+            <% @conversations.each do |conversation| %>
+                <li class="media">
+                  <%= image_tag("http://placehold.it/50x50", class: "media-object pull-left") %>
+                  <div class="media-body">
+                    <%= link_to "", conversation_path(conversation), class: "conversation", "data-cid" => conversation.id %>
+                        <h4 class="media-heading"><%= conversation_interlocutor(conversation).name %></h4>
+                        <p><%= conversation.messages.last.nil? ? "No messages" : truncate(conversation.messages.last.body, length: 45) %></p>
+                  </div>
+                </li>
+
+            <% end %>
+            <% @groupconversations.each do |conversation| %>
+                <li class="media">
+                  <%= image_tag("http://placehold.it/50x50", class: "media-object pull-left") %>
+                  <div class="media-body">
+                    <%= link_to "", groupconversation_path(conversation), class: "groupconversation", "data-cid" => conversation.id %>
+                        <h4 class="media-heading"><%= grconversation_interlocutor(conversation) %></h4>
+                        <p><%= conversation.groupmessages.last.nil? ? "No messages" : truncate(conversation.groupmessages.last.body, length: 45) %></p>
+                  </div>
+                </li>
+
+            <% end %>
+          </ul>
+          
+      <% elsif @groupconversations.any? %>
+          <ul class="media-list">
+            <% @groupconversations.each do |conversation| %>
+                <li class="media">
+                  <%= image_tag("http://placehold.it/50x50", class: "media-object pull-left") %>
+                  <div class="media-body">
+                    <%= link_to "", groupconversation_path(conversation), class: "groupconversation", "data-cid" => conversation.id %>
+                        <h4 class="media-heading"><%= grconversation_interlocutor(conversation) %></h4>
+                        <p><%= conversation.groupmessages.last.nil? ? "No messages" : truncate(conversation.groupmessages.last.body, length: 45) %></p>
+                  </div>
+                </li>
+
+            <% end %>
+          </ul>
+          
+       <% elsif @conversations.any?  %>
           <ul class="media-list">
             <% @conversations.each do |conversation| %>
                 <li class="media">
@@ -63,6 +104,7 @@
 
             <% end %>
           </ul>
+      
       <% else %>
           <p>You have no conversations. Click send message with any user to create one.</p>
       <% end %>
@@ -90,7 +132,7 @@
             <% @users.each_with_index do |user,index| %>
               <tr>
                 <td>
-                  <label><input type="checkbox", value=  <%= user.id %>, name="checkbox",id ="checkbox-<%= index +=1 %>" > </label>
+                  <label><input type="checkbox", value=  '<%= user.id %>', name="checkbox",id ="checkbox-<%= index +=1 %>" > </label> <!-- had to add apostrophies to remove the comma problem-->
                 </td>
                 <td>
                   <%= user.name %>
@@ -105,9 +147,13 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary start-group" >Done</button>
+        <button type="button" class="btn btn-primary start-group" data-sid ="<%=current_user.id %>" >Done</button>
       </div>
     </div>
   </div>
 </div>
 </div>
+
+<%= content_for :script do %>
+  new app.searchMenu;
+<% end %>

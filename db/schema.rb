@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160320213634) do
+ActiveRecord::Schema.define(version: 20160416004214) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,12 +38,30 @@ ActiveRecord::Schema.define(version: 20160320213634) do
   add_index "conversations", ["recipient_id"], name: "index_conversations_on_recipient_id", using: :btree
   add_index "conversations", ["sender_id"], name: "index_conversations_on_sender_id", using: :btree
 
+  create_table "folders", force: :cascade do |t|
+    t.integer  "conversation_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "folders", ["conversation_id"], name: "index_folders_on_conversation_id", using: :btree
+
   create_table "groupconversations", force: :cascade do |t|
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false
     t.integer  "{:index=>true, :foreign_key=>true}_id"
     t.integer  "groupuserarray",                        default: [],              array: true
   end
+
+  add_index "groupconversations", ["groupuserarray"], name: "index_groupconversations_on_groupuserarray", unique: true, using: :btree
+
+  create_table "groupfolders", force: :cascade do |t|
+    t.integer  "groupconversation_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "groupfolders", ["groupconversation_id"], name: "index_groupfolders_on_groupconversation_id", using: :btree
 
   create_table "groupmessages", force: :cascade do |t|
     t.datetime "created_at",           null: false
@@ -95,6 +113,8 @@ ActiveRecord::Schema.define(version: 20160320213634) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "assets", "users"
+  add_foreign_key "folders", "conversations"
+  add_foreign_key "groupfolders", "groupconversations"
   add_foreign_key "groupmessages", "groupconversations"
   add_foreign_key "groupmessages", "users"
   add_foreign_key "messages", "conversations"

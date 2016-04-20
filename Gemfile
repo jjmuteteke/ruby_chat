@@ -2,8 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.3.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5'
-
+gem 'rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -21,12 +20,18 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-
+gem 'aws-sdk', '~> 2'
 gem 'private_pub'
 gem 'thin'
 gem 'devise'
 gem 'js_cookie_rails'
 gem 'jquery-turbolinks'
+gem 'table_print'
+gem 'jquery-ui-rails'
+gem 'httparty'
+gem 'jquery-fileupload-rails'
+gem 'bootstrap_tokenfield_rails'
+
 #file upload
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 # Use ActiveModel has_secure_password

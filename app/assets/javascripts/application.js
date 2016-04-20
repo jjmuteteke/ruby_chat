@@ -12,9 +12,17 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui/autocomplete
+//= require searchMenu
 //= require bootstrap.min
+//= require jquery-tokeninput/src/jquery.tokeninput.js
+//= require bootstrap-tokenfield
+//= require typeahead.js/dist/typeahead.bundle.min.js
+//= require jquery.tokeninput
+//= require jquery-fileupload
 //= require js.cookie
 //= require private_pub
 //= require chat
+//= require groupchat
 //= require turbolinks
 //= require_tree .

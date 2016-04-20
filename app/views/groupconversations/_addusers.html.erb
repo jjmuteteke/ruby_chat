@@ -1,0 +1,17 @@
+<!-- this is code to bring down the add users for group convo -->
+<!-- change this to a form so that we can use the tokeninput -->
+
+<div class="custom-search-input">
+                <div class="input-group">
+                    <input type="text" class="form-control input-sm searchbartype" id="searchbar-typehead" placeholder="Buscar" autofocus data-cid ="<%=@gconversation.id %>" />
+                    <div class="results" id="search-results"></div>
+                    <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg adduser" type="button" data-rip = "<%=@gconversation.groupuserarray %>" data-cid ="<%=@gconversation.id %>" data-sid= <%=current_user.id%> >
+                            <i class="fa fa-search-plus"></i> 
+                            
+                        </button>
+                    </span>
+                </div>
+            </div>
+           
+<!-- it needs to be something like this-->
