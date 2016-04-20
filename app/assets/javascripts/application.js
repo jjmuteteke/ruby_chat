@@ -10,10 +10,11 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require bootstrap.min
+
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui/autocomplete
+//= require bootstrap.min
 //= require searchMenu
 //= require jquery-tokeninput/src/jquery.tokeninput.js
 //= require bootstrap-tokenfield
