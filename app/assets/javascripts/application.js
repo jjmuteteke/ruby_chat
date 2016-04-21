@@ -20,7 +20,7 @@
 //= require bootstrap-tokenfield
 //= require typeahead.js/dist/typeahead.bundle.min.js
 //= require jquery.tokeninput
-//= require jquery-fileupload
+//=require jquery-fileupload/basic
 //= require js.cookie
 //= require private_pub
 //= require chat

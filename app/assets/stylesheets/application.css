@@ -13,7 +13,7 @@
  *= require_tree .
  *= require bootstrap
  *= require jquery-ui
-
+*= require jquery.fileupload
   *= require jquery-tokeninput/styles/token-input
   *= require jquery-tokeninput/styles/token-input-facebook
  *= require bootstrap-tokenfield
