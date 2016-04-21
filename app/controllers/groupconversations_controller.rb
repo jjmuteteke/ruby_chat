@@ -89,5 +89,7 @@ class GroupconversationsController < ApplicationController
   key: "g/g/y/${filename}", success_action_status: '201', acl: 'public-read'
   
 })
+ #render json: {  url: @post.url }
+
    end 
 end

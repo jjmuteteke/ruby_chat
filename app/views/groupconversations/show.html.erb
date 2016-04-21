@@ -12,7 +12,7 @@
   </div>
   <div class="gchatboxoptions">
     <input type="file" id="fileLoader" name="files" title="Load File" style = "display:none;" />
-    <%= link_to "<i class='fa fa-paperclip'></i> ".html_safe, "#", class: "guploadfile", "data-cid" => @gconversation.id,  "data-url" => @post %>
+    <%= link_to "<i class='fa fa-paperclip'></i> ".html_safe, "#", class: "guploadfile", "data-cid" => @gconversation.id,  "data-url" => @post.url, "data-form" => @post.as_json['fields'] %>
     &nbsp;&nbsp;
      <%= link_to "<i class='fa fa-users'></i> ".html_safe, "#", class: "gaddusertoChatBox", "data-cid" => @gconversation.id %>
     &nbsp;&nbsp;

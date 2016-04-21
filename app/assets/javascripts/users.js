@@ -43,6 +43,7 @@ var ready = function() {
     this code will be for file selecting and actual work
     */
     $(document).on('click', '#fileLoader', function (e) {
+        /*
         console.log("lkok");
         var fileInput = $( "input:file" );
         console.log(fileInput)
@@ -50,19 +51,28 @@ var ready = function() {
         //var formm = $(this).data('form');
         console.log("lol");
         console.log(url);
+        */
+        var id = $(this).data("cid");
+        /*
+        $.get("groupconversations/" + id, function (data) {
+               console.log("lol")
+               console.log(data.url);
+               console.log(data.fields);
+            }, "json");
+            */
        //console.log(formm);
-         /*
+          var fileInput = $( "input:file" );
          (".guploadfile").fileupload({
              fileInput: fileInput,
-             url: "gtgt",
+             url: $(this).data("url"),
              type:            'POST',
       autoUpload:       true,
-      formData:         form.data('form-data'),
+      formData:         $(this).data("form"),
       paramName:        'file', // S3 does not like nested name fields i.e. name="user[avatar_url]"
       dataType:         'XML',  // S3 returns XML if success_action_status is set to 201
       replaceFileInput: false
          });
-         */
+         
     });
     /*
     this button will trigger file selecting
