@@ -47,10 +47,10 @@ var ready = function() {
         var fileInput = $( "input:file" );
         console.log(fileInput)
         var url = $(this).data('url');
-        var formm = $(this).data('form');
+        //var formm = $(this).data('form');
         console.log("lol");
         console.log(url);
-        console.log(formm);
+       //console.log(formm);
          /*
          (".guploadfile").fileupload({
              fileInput: fileInput,
