@@ -1,9 +1,11 @@
+/*
 var app = window.app = {};
 app.searchMenu = new function()
 {
   this._input = $('#searchbar');
   this._initAutocomplete();
 };
+
 
 app.searchMenu.prototype = {
     
@@ -32,3 +34,4 @@ app.searchMenu.prototype = {
     return false;
   } 
 };
+*/
