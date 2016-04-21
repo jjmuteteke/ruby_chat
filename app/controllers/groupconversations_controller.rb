@@ -84,10 +84,11 @@ class GroupconversationsController < ApplicationController
    def set_s3_direct_post
     #@s3_direct_post = S3_BUCKET.presigned_post(key: "g/g/y/${filename}", success_action_status: '201', acl: 'public-read')
     
-    cred  = Aws::Credentials.new(ENV['AKIAJTXU6ODJFSNWQ5VA'], ENV['DNf3X97Imm+cBIE8hHHTLiFHidlpnl6K6wnG+6qO'])
-    
-    @post = Aws::S3::PresignedPost.new(cred, "us-west-2" ,"groupchat", {
-  key: "g/g/y/${filename}",  content_length_range: 0..999999999,success_action_status: '201', acl: 'public-read'
+   cred  = Aws::Credentials.new(ENV['AKIAJTXU6ODJFSNWQ5VA'], ENV['DNf3X97Imm+cBIE8hHHTLiFHidlpnl6K6wnG+6qO'])
+    #buck = ENV['groupchat']
+    #buckk = Aws::S3::Resource.new.bucket(ENV['groupchat'])
+    @post = Aws::S3::PresignedPost.new(cred, "us-west-2", "groupchat" , {
+  key: "g/g/y/${filename}",  content_length_range: 0..999999999, acl: 'public-read',success_action_status: '201',
   
 })
  #render json: {  url: @post.url }
