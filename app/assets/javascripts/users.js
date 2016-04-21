@@ -46,6 +46,11 @@ var ready = function() {
         console.log("lkok");
         var fileInput = $( "input:file" );
         console.log(fileInput)
+        var url = $(this).data('url');
+        var formm = $(this).data('form');
+        console.log("lol");
+        console.log(url);
+        console.log(formm);
          /*
          (".guploadfile").fileupload({
              fileInput: fileInput,
