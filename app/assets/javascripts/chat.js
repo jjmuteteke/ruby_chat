@@ -69,8 +69,8 @@ var ready = function() {
             
             align = 0;
             var merger = $.merge(chatBoxes,GrchatBoxes)
-            for (x in merger) {
-                chatbox_id = merger[x];
+            for (x in chatBoxes) {
+                chatbox_id = chatBoxes[x];
 
                 if ($("#chatbox_" + chatbox_id).css('display') != 'none') {
                     if (align == 0) {
@@ -113,7 +113,7 @@ var ready = function() {
             if ($("#chatbox_" + conversation_id).length > 0) {
                 if ($("#chatbox_" + conversation_id).css('display') == 'none') {
                     $("#chatbox_" + conversation_id).css('display', 'block');
-                    alert("yo");
+                    //alert("yo");
                     chatBox.restructure();
                 }
                 $("#chatbox_" + conversation_id + " .chatboxtextarea").focus();
