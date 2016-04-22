@@ -87,7 +87,7 @@ class GroupconversationsController < ApplicationController
    cred  = Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY'])
     #buck = ENV['groupchat']
     #buckk = Aws::S3::Resource.new.bucket('groupchat')
-    @post = Aws::S3::PresignedPost.new(cred, "us-west-2", "groupchat" , {
+    @post = Aws::S3::PresignedPost.new(cred, "us-west-2", S3_BUCKET , {
   key: "g/g/y/${filename}",  content_length_range: 0..999999999, acl: 'public-read',success_action_status: '201',
   
   })
