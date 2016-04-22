@@ -52,12 +52,12 @@ var ready = function() {
         console.log("lol");
         console.log(url);
         */
-        /*
+        
         console.log("tits")
         console.log(url)
         console.log(formm)
         var id = $(this).data("cid");
-        */
+        
         /*
         $.get("groupconversations/" + id, function (data) {
                console.log("lol")
@@ -70,7 +70,7 @@ var ready = function() {
           
          fileInput.fileupload({
              fileInput: fileInput,
-             url: "https://groupchat.s3.amazonaws.com",
+             url: url,
              type:            'POST',
       autoUpload:       true,
       formData:        formm,
