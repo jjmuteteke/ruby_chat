@@ -88,7 +88,7 @@ class GroupconversationsController < ApplicationController
     #buck = ENV['groupchat']
     #buckk = Aws::S3::Resource.new.bucket('groupchat')
     @post = Aws::S3::PresignedPost.new(cred, "us-west-2", ENV['S3_BUCKET'] , {
-  key: "g/g/y/${filename}",  content_length_range: 0..999999999, acl: 'public-read',success_action_status: '201',
+  key: "uploads/#{SecureRandom.uuid}/${filename}",  content_length_range: 0..999999999, acl: 'public-read',success_action_status: '201',
   
   })
   @fie = @post.to_json;
