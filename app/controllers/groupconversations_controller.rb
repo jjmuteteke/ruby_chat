@@ -93,6 +93,7 @@ class GroupconversationsController < ApplicationController
   })
   @fie = @post.to_json;
 =end
+ @fie = @post.to_json;
  #render json: {  url: @post.url }
 
    end 
