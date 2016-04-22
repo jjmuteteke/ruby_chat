@@ -91,6 +91,7 @@ class GroupconversationsController < ApplicationController
   key: "g/g/y/${filename}",  content_length_range: 0..999999999, acl: 'public-read',success_action_status: '201',
   
 })
+  @fie = @post.to_json;
  #render json: {  url: @post.url }
 
    end 

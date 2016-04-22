@@ -1,5 +1,5 @@
 // JavaScript File
- 
+
 var ready = function() {
     
     /**
@@ -52,7 +52,12 @@ var ready = function() {
         console.log("lol");
         console.log(url);
         */
+        /*
+        console.log("tits")
+        console.log(url)
+        console.log(formm)
         var id = $(this).data("cid");
+        */
         /*
         $.get("groupconversations/" + id, function (data) {
                console.log("lol")
@@ -62,12 +67,13 @@ var ready = function() {
             */
        //console.log(formm);
           var fileInput = $( "input:file" );
+          
          fileInput.fileupload({
              fileInput: fileInput,
-             url: $(this).data("url"),
+             url: url,
              type:            'POST',
       autoUpload:       true,
-      formData:         $(this).data("form"),
+      formData:        formm,
       paramName:        'file', // S3 does not like nested name fields i.e. name="user[avatar_url]"
       dataType:         'XML',  // S3 returns XML if success_action_status is set to 201
       replaceFileInput: false
@@ -80,8 +86,13 @@ var ready = function() {
      $(document).on('click', '.guploadfile', function (e) {
          //var fileInput    = $('input:file');
          console.log("uploadfilefam");
-         $('#fileLoader').click();
         
+        console.log("lol")
+            url = $(this).data('sid');
+         formm = $(this).data('form');
+         // console.log( formm);
+         // console.log(url);
+           $('#fileLoader').click();
      });
      
     $(document).on('click', '.adduser', function (e) {
