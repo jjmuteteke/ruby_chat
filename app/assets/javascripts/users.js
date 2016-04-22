@@ -70,7 +70,7 @@ var ready = function() {
           
          fileInput.fileupload({
              fileInput: fileInput,
-             url: url,
+             url: "https://groupchat.s3.amazonaws.com",
              type:            'POST',
       autoUpload:       true,
       formData:        formm,
