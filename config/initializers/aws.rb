@@ -1,6 +1,6 @@
 Aws.config.update({
-  region: 'Oregon',
-  credentials: Aws::Credentials.new(ENV['AKIAJTXU6ODJFSNWQ5VA'], ENV['DNf3X97Imm+cBIE8hHHTLiFHidlpnl6K6wnG+6qO'])
+  region: 'us-west-2',
+  credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY']),
 })
 
-S3_BUCKET = Aws::S3::Resource.new.bucket(ENV['groupchat'])
+S3_BUCKET = Aws::S3::Resource.new.bucket(ENV['S3_BUCKET'])
