@@ -56,6 +56,7 @@ var ready = function() {
         console.log("tits")
         console.log(url)
         console.log(formm)
+        console.log(typeof(formm))
         var id = $(this).data("cid");
         
         /*
