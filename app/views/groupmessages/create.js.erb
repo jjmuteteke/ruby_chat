@@ -12,10 +12,10 @@
     gchatbox.append("<%= j render( partial: @groupmessage ) %>");
     gchatbox.scrollTop(gchatbox[0].scrollHeight);
 
-    
+    if (sender_id != reciever_id) {
         gchatBox.chatWith(id);
         gchatbox.children().last().removeClass("self").addClass("other");
         gchatbox.scrollTop(gchatbox[0].scrollHeight);
         gchatBox.notify();
-    
+    }
 <% end %>
