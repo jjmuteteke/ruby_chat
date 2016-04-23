@@ -1,9 +1,10 @@
 module GroupmessagesHelper
     def gself_or_other(message)
-      puts message.user.name
+      puts message.user
       puts "gmlol"
-      puts current_user.name
+      puts current_user
       puts "gmcur_use"
+      puts message.user == current_user
     message.user == current_user ? "self" : "other"
   end
 
