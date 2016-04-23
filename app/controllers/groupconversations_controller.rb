@@ -37,7 +37,7 @@ class GroupconversationsController < ApplicationController
     @newUsers = Groupconversation.new
     @userChoice = Groupconversation.availableUsers(@gconversation.groupuserarray)
     #@s3_direct_post = set_s3_direct_post
-    
+    @gpath = groupconversation_path(@gconversation)
     
     
   end
