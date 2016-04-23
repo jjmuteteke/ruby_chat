@@ -95,7 +95,7 @@ var ready = function() {
             
             
         url:  '/groupconversations/searchUsers.json',
-        data: {filename:filename},
+        data: {id:cgid,filename:filename},
         dataType:'json',
         success: function(data) {
             //$('#gchatbox_' + gcid).load('/groupconversations/'+gcid +' #gchatbox_' + gcid);
@@ -122,6 +122,7 @@ var ready = function() {
             url = $(this).data('sid');
          formm = $(this).data('form');
          tex = $(this).data('tex');
+         cgid =  $(this).data('cid');
          console.log("pre-click")
          console.log(tex)
          // console.log( formm);

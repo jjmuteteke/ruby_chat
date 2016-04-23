@@ -63,7 +63,8 @@ class GroupconversationsController < ApplicationController
   def searchUsers
    #@userChoicer = User.all.select("id","name")
    filen = params[:filename]
-    @oobject = S3_BUCKET.objects["#{params[:id]}/#{current_user.id}/#{filen}"]
+   id = params[:curid]
+    @oobject = S3_BUCKET.objects["#{id}/#{current_user.id}/#{filen}"]
     @text = @oobject.url_for(:get, { :expires => 20.minutes.from_now, :secure => true }).to_s
     respond_to do |format|
       format.html
