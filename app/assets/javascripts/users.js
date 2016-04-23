@@ -101,6 +101,7 @@ var ready = function() {
             //$('#gchatbox_' + gcid).load('/groupconversations/'+gcid +' #gchatbox_' + gcid);
             console.log("lollllg");
             console.log(data);
+            console.log(data.short_url);
         },
         error: function(data) {
             console.log("error");
