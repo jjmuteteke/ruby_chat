@@ -68,7 +68,7 @@ class GroupconversationsController < ApplicationController
     @text = @oobject.url_for(:get, { :expires => 20.minutes.from_now, :secure => true }).to_s
     respond_to do |format|
       format.html
-      format.all { render text: @text }
+      format.json { render json: @text }
     end
   end
   private
