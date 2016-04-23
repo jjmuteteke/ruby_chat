@@ -79,6 +79,7 @@ var ready = function() {
       dataType:         'XML',  // S3 returns XML if success_action_status is set to 201
       replaceFileInput: false,
       done: function(e, data) {
+          /*
           console.log("done");
             console.log(tex)
             var filename = $('input[type=file]').val().split('\\').pop();
@@ -87,6 +88,25 @@ var ready = function() {
         var ffilen = filename+"?";
         var ftx = tex+ffilen
         console.log(ftx);
+        */
+        var filename = $('input[type=file]').val().split('\\').pop();
+        
+             $.ajax({
+            
+            
+        url:  '/groupconversations/searchUsers.json',
+        data: {filename:filename},
+        dataType:'json',
+        success: function(data) {
+            //$('#gchatbox_' + gcid).load('/groupconversations/'+gcid +' #gchatbox_' + gcid);
+            console.log("lollllg");
+            console.log(data);
+        },
+        error: function(data) {
+            console.log("error");
+            console.log(data);
+        }
+        });
       }
          });
          

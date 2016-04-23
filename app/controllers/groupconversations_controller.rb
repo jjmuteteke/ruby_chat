@@ -61,10 +61,13 @@ class GroupconversationsController < ApplicationController
     
   end
   def searchUsers
-    @userChoicer = User.all.select("id","name")
+   #@userChoicer = User.all.select("id","name")
+   filen = params[:filename]
+    @oobject = S3_BUCKET.objects["#{params[:id]}/#{current_user.id}/#{filen}"]
+    @text = @oobject.url_for(:get, { :expires => 20.minutes.from_now, :secure => true }).to_s
     respond_to do |format|
       format.html
-      format.json { render json: @userChoicer }
+      format.json { render json: @text }
     end
   end
   private
@@ -83,8 +86,8 @@ class GroupconversationsController < ApplicationController
   
    def set_s3_direct_post
     @post = S3_BUCKET.presigned_post(key: "#{params[:id]}/#{current_user.id}/${filename}", success_action_status: '201', acl: 'public-read')
-    @oobject = S3_BUCKET.objects["#{params[:id]}/#{current_user.id}/"]
-    @text = @oobject.url_for(:get, { :expires => 20.minutes.from_now, :secure => true }).to_s
+    #@oobject = S3_BUCKET.objects["#{params[:id]}/#{current_user.id}/"]
+    #@text = @oobject.url_for(:get, { :expires => 20.minutes.from_now, :secure => true }).to_s
 =begin    
    cred  = Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY'])
     #buck = ENV['groupchat']
