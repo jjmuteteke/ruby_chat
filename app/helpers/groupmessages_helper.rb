@@ -4,7 +4,7 @@ module GroupmessagesHelper
       puts "gmlol"
       puts current_user
       puts "gmcur_use"
-      puts message.user == current_user
+      puts message.user == current_user ? "self" : "other"
     message.user == current_user ? "self" : "other"
   end
 
