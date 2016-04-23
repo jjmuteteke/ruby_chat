@@ -5,8 +5,10 @@
     var id = "<%= @groupconversation.id %>";
     var gchatbox = $("#gchatbox_" + id + " .gchatboxcontent");
     var sender_id = "<%= @groupmessage.user.id %>";
-    <!--var reciever_id = $('meta[name=user-id]').attr("content"); -->
-
+    var reciever_id = $('meta[name=user-id]').attr("content");
+    console.log("hello groupfrom js");
+    console.log(sender_id);
+    console.log(reciever_id);
     gchatbox.append("<%= j render( partial: @groupmessage ) %>");
     gchatbox.scrollTop(gchatbox[0].scrollHeight);
 
