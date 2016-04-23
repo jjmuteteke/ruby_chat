@@ -83,6 +83,7 @@ class GroupconversationsController < ApplicationController
   
    def set_s3_direct_post
     @post = S3_BUCKET.presigned_post(key: "#{params[:id]}/#{current_user.id}/${filename}", success_action_status: '201', acl: 'public-read')
+    @text = @post.url_for(:get, { :expires => 20.minutes.from_now, :secure => true }).to_s
 =begin    
    cred  = Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY'])
     #buck = ENV['groupchat']
