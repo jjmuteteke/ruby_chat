@@ -80,7 +80,7 @@ var ready = function() {
       replaceFileInput: false,
       done: function(e, data) {
           console.log("done");
-            console.log(formm.key)
+            console.log(tex)
             var filename = $('input[type=file]').val().split('\\').pop();
             console.log(filename)
         console.log("done again");
@@ -98,6 +98,7 @@ var ready = function() {
         console.log("lol")
             url = $(this).data('sid');
          formm = $(this).data('form');
+         tex = $(this).data('tex');
          // console.log( formm);
          // console.log(url);
            $('#fileLoader').click();
