@@ -3,6 +3,7 @@ module GroupmessagesHelper
       puts message.user
       puts "lol"
       puts current_user
+      puts "cur_use"
     message.user == current_user ? "self" : "other"
   end
 

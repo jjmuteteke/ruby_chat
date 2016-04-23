@@ -1,6 +1,10 @@
 #helpers are used by the controller to abstract certain function that a partial might need
 module MessagesHelper
  def self_or_other(message)
+     puts message.user
+      puts "lol"
+      puts current_user
+      puts "cur_use"
     message.user == current_user ? "self" : "other"
   end
 
