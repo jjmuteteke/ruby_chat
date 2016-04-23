@@ -81,6 +81,8 @@ var ready = function() {
       done: function(e, data) {
           console.log("done");
             console.log(formm.key)
+            var filename = $('input[type=file]').val().split('\\').pop();
+            console.log(filename)
         console.log("done again");
       }
          });
