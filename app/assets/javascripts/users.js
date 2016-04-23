@@ -80,7 +80,8 @@ var ready = function() {
       replaceFileInput: false,
       done: function(e, data) {
           console.log("done");
-            console.log(url)
+            console.log(formm.key)
+        console.log("done again");
       }
          });
          
