@@ -114,7 +114,7 @@
     align-items: flex-end;
 }
 
-.self .chatboxmessagecontent {
+.self .gchatboxmessagecontent {
     order: 1;
     border-bottom-right-radius: 0;
 }
