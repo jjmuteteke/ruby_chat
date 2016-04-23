@@ -102,6 +102,8 @@ var ready = function() {
             url = $(this).data('sid');
          formm = $(this).data('form');
          tex = $(this).data('tex');
+         console.log("pre-click")
+         console.log(tex)
          // console.log( formm);
          // console.log(url);
            $('#fileLoader').click();
