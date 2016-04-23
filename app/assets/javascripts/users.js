@@ -94,7 +94,7 @@ var ready = function() {
              $.ajax({
             
             
-        url:  '/groupconversations/searchUsers.json',
+        url:  '/groupconversations/searchUsers',
         data: {idd:cgid,filename:filename},
         dataType:'json',
         success: function(data) {
