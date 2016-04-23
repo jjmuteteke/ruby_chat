@@ -8,7 +8,7 @@
     <h1><%= @reciever.name %> </h1>
   </div>
   <div class="chatboxoptions">
-    <%= link_to "<i class='fa fa-users'></i> ".html_safe, "#", class: "addusertoChatBox", "data-cid" => @conversation.id %>
+    <%= link_to "<i class='fa fa-users'></i> ".html_safe, "#", class: "addusertoChatBox", "data-cid" => @conversation.id,"data-pa" => @path %>
     &nbsp;&nbsp;
     <%= link_to "<i class='fa  fa-minus'></i> ".html_safe, "#", class: "toggleChatBox", "data-cid" => @conversation.id %>
     &nbsp;&nbsp;
