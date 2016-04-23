@@ -66,9 +66,11 @@ class GroupconversationsController < ApplicationController
    idd = params[:idd]
     @oobject = S3_BUCKET.objects["#{idd}/#{current_user.id}/#{filen}"]
     @text = @oobject.url_for(:get, { :expires => 20.minutes.from_now, :secure => true }).to_s
+    client = Bitly.client
+    @url = client.shorten(@text)
     respond_to do |format|
       format.html
-      format.json { render json: @text }
+      format.json { render json: @url }
     end
   end
   private
