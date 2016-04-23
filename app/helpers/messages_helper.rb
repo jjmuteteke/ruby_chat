@@ -5,6 +5,7 @@ module MessagesHelper
       puts "mlol"
       puts current_user.name
       puts "mcur_use"
+      puts message.user == current_user ? "self" : "other"
     message.user == current_user ? "self" : "other"
   end
 
