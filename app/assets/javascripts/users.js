@@ -95,7 +95,7 @@ var ready = function() {
             
             
         url:  '/groupconversations/searchUsers.json',
-        data: {id:cgid,filename:filename},
+        data: {idd:curid,filename:filename},
         dataType:'json',
         success: function(data) {
             //$('#gchatbox_' + gcid).load('/groupconversations/'+gcid +' #gchatbox_' + gcid);
