@@ -102,6 +102,20 @@ var ready = function() {
             console.log("lollllg");
             console.log(data);
             console.log(data.short_url);
+            $.ajax({
+              type: "POST",
+              url: "/groupconversations/"+cgid+"/groupmessages",
+              data: {body:data.short_url},
+              success: function(data) {
+                  console.log("success");
+                  console.log(data);
+                  },
+                  error: function(data) {
+            console.log("error");
+            console.log(data);
+        }
+        });
+            
         },
         error: function(data) {
             console.log("error");
