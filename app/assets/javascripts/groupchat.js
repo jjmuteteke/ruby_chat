@@ -16,7 +16,7 @@ var Gready =  function() {
          
          chatWith: function (groupconversation_id) {
              gchatBox.createChatBox(groupconversation_id)
-             $("#gchatbox_" + groupconversation_id + " .gchatboxtextarea").focus();
+             $("#gchatbox_" + groupconversation_id + " .chatboxtextarea").focus();
          },
          
           /**
@@ -120,12 +120,12 @@ var Gready =  function() {
                     alert("gyo");
                     gchatBox.restructure();
                 }
-                $("#gchatbox_" + groupconversation_id + " .gchatboxtextarea").focus();
+                $("#gchatbox_" + groupconversation_id + " .chatboxtextarea").focus();
                 return;
             }
                 //this simply goes and appends to the html body
                 //new html code
-            $("body").append('<div id="gchatbox_' + groupconversation_id + '" class="gchatbox"></div>')
+            $("body").append('<div id="gchatbox_' + groupconversation_id + '" class="chatbox"></div>')
             // this is a get method that sends a query to the database
             //the "data"within the function is what is returned
             //this is quering conversation table for a conversation id
@@ -138,7 +138,7 @@ var Gready =  function() {
             
             $.get("groupconversations/" + groupconversation_id, function (data) {
                 $('#gchatbox_' + groupconversation_id).html(data);
-                $("#gchatbox_" + groupconversation_id + " .gchatboxcontent").scrollTop($("#gchatbox_" + groupconversation_id + " .gchatboxcontent")[0].scrollHeight);
+                $("#gchatbox_" + groupconversation_id + " .chatboxcontent").scrollTop($("#gchatbox_" + groupconversation_id + " .chatboxcontent")[0].scrollHeight);
             }, "html");
 
             $("#gchatbox_" + groupconversation_id).css('bottom', '0px');
@@ -175,8 +175,8 @@ var Gready =  function() {
                 }
 
                 if (gminimize == 1) {
-                    $('#gchatbox_' + groupconversation_id + ' .gchatboxcontent').css('display', 'none');
-                    $('#gchatbox_' + groupconversation_id + ' .gchatboxinput').css('display', 'none');
+                    $('#gchatbox_' + groupconversation_id + ' .chatboxcontent').css('display', 'none');
+                    $('#gchatbox_' + groupconversation_id + ' .chatboxinput').css('display', 'none');
                 }
             }
 
@@ -187,18 +187,18 @@ var Gready =  function() {
             //you can deduce what happes at focus
             //it focus on the chatbox then it adds and removes classes
             //at click it simply does the function when clicked
-            $("#gchatbox_" + groupconversation_id + " .gchatboxtextarea").blur(function () {
+            $("#gchatbox_" + groupconversation_id + " .chatboxtextarea").blur(function () {
                 GrchatboxFocus[groupconversation_id] = false;
-                $("#gchatbox_" + groupconversation_id + " .gchatboxtextarea").removeClass('gchatboxtextareaselected');
+                $("#gchatbox_" + groupconversation_id + " .chatboxtextarea").removeClass('chatboxtextareaselected');
             }).focus(function () {
                 GrchatboxFocus[groupconversation_id] = true;
-                $('#gchatbox_' + groupconversation_id + ' .gchatboxhead').removeClass('gchatboxblink');
-                $("#gchatbox_" + groupconversation_id + " .gchatboxtextarea").addClass('gchatboxtextareaselected');
+                $('#gchatbox_' + groupconversation_id + ' .chatboxhead').removeClass('chatboxblink');
+                $("#gchatbox_" + groupconversation_id + " .chatboxtextarea").addClass('chatboxtextareaselected');
             });
 
             $("#gchatbox_" + groupconversation_id).click(function () {
-                if ($('#gchatbox_' + groupconversation_id + ' .gchatboxcontent').css('display') != 'none') {
-                    $("#gchatbox_" + groupconversation_id + " .gchatboxtextarea").focus();
+                if ($('#gchatbox_' + groupconversation_id + ' .chatboxcontent').css('display') != 'none') {
+                    $("#gchatbox_" + groupconversation_id + " .chatboxtextarea").focus();
                 }
             });
             //after click it shows 
@@ -235,24 +235,24 @@ var Gready =  function() {
             var maxHeight = 94;
 
             if (maxHeight > adjustedHeight) {
-                adjustedHeight = Math.max(gchatboxtextarea.scrollHeight, adjustedHeight);
+                adjustedHeight = Math.max(chatboxtextarea.scrollHeight, adjustedHeight);
                 if (maxHeight)
                     adjustedHeight = Math.min(maxHeight, adjustedHeight);
-                if (adjustedHeight > gchatboxtextarea.clientHeight)
-                    $(gchatboxtextarea).css('height', adjustedHeight + 8 + 'px');
+                if (adjustedHeight > chatboxtextarea.clientHeight)
+                    $(chatboxtextarea).css('height', adjustedHeight + 8 + 'px');
             } else {
-                $(gchatboxtextarea).css('overflow', 'auto');
+                $(chatboxtextarea).css('overflow', 'auto');
             }
 
         },
         
         toggleChatBoxGrowth: function (groupconversation_id) {
-            if ($('#gchatbox_' + groupconversation_id + ' .gchatboxcontent').css('display') == 'none') {
+            if ($('#gchatbox_' + groupconversation_id + ' .chatboxcontent').css('display') == 'none') {
 
                 var minimizedChatBoxes = new Array();
 
                 if (Cookies.get('gchatbox_minimized')) {
-                    minimizedChatBoxes = Cookies.get('gchatbox_minimized').split(/\|/);
+                    minimizedChatBoxes = Cookies.get('chatbox_minimized').split(/\|/);
                 }
 
                 var newCookie = '';
@@ -267,9 +267,9 @@ var Gready =  function() {
 
 
                Cookies.set('gchatbox_minimized', newCookie);
-                $('#gchatbox_' + groupconversation_id + ' .gchatboxcontent').css('display', 'block');
-                $('#gchatbox_' + groupconversation_id + ' .gchatboxinput').css('display', 'block');
-                $("#gchatbox_" + groupconversation_id + " .gchatboxcontent").scrollTop($("#gchatbox_" + groupconversation_id + " .gchatboxcontent")[0].scrollHeight);
+                $('#gchatbox_' + groupconversation_id + ' .chatboxcontent').css('display', 'block');
+                $('#gchatbox_' + groupconversation_id + ' .chatboxinput').css('display', 'block');
+                $("#gchatbox_" + groupconversation_id + " .chatboxcontent").scrollTop($("#gchatbox_" + groupconversation_id + " .chatboxcontent")[0].scrollHeight);
             } else {
 
                 var newCookie = groupconversation_id;
@@ -280,8 +280,8 @@ var Gready =  function() {
 
 
                 Cookies.set('gchatbox_minimized', newCookie);
-                $('#gchatbox_' + groupconversation_id + ' .gchatboxcontent').css('display', 'none');
-                $('#gchatbox_' + groupconversation_id + ' .gchatboxinput').css('display', 'none');
+                $('#gchatbox_' + groupconversation_id + ' .chatboxcontent').css('display', 'none');
+                $('#gchatbox_' + groupconversation_id + ' .chatboxinput').css('display', 'none');
             }
 
         }

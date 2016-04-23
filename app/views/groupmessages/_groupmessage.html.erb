@@ -4,7 +4,7 @@
   <div class="avatar">
     <img src="http://placehold.it/50x50" />
   </div>
-  <div class="gchatboxmessagecontent">
+  <div class="chatboxmessagecontent">
     <p><%= groupmessage.body %></p>
     <time datetime="<%= groupmessage.created_at %>" title="<%= groupmessage.created_at.strftime("%d %b  %Y at %I:%M%p") %>">
       <%= gmessage_interlocutor(groupmessage).name %> • <%= groupmessage.created_at.strftime("%H:%M %p") %>
