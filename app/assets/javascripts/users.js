@@ -84,6 +84,9 @@ var ready = function() {
             var filename = $('input[type=file]').val().split('\\').pop();
             console.log(filename)
         console.log("done again");
+        var ffilen = filename+"?";
+        var ftx = tex+ffilen
+        console.log(ftx);
       }
          });
          

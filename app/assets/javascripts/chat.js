@@ -50,7 +50,7 @@ var ready = function() {
          */
 
         restructure: function () {
-            /*
+            
             align = 0;
             for (x in chatBoxes) {
                 chatbox_id = chatBoxes[x];
@@ -65,8 +65,8 @@ var ready = function() {
                     align++;
                 }
             }
-            */
             
+            /*
             align = 0;
             var merger = $.merge(chatBoxes,GrchatBoxes)
             for (x in chatBoxes) {
@@ -91,7 +91,7 @@ var ready = function() {
                     align++;
                 }
             }
-
+            */
         },
         
         /**

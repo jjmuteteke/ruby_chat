@@ -54,7 +54,7 @@ var Gready =  function() {
          */
 
         restructure: function () {
-            /*
+            
             align = 0;
             for (x in GrchatBoxes) {
                 chatbox_id = chatBoxes[x];
@@ -69,8 +69,8 @@ var Gready =  function() {
                     align++;
                 }
             }
-            */
             
+            /*
             align = 0;
             var merger = $.merge(chatBoxes,GrchatBoxes)
             for (x in merger) {
@@ -95,6 +95,7 @@ var Gready =  function() {
                     align++;
                 }
             }
+            */
         },
         
         /**
