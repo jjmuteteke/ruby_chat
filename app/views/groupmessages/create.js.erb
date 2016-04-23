@@ -3,7 +3,7 @@
 <!-- the receiver id line -->
 <% publish_to @gpath do %>
     var id = "<%= @groupconversation.id %>";
-    var chatbox = $("#gchatbox_" + id + " .gchatboxcontent");
+    var gchatbox = $("#gchatbox_" + id + " .gchatboxcontent");
     var sender_id = "<%= @groupmessage.user.id %>";
     <!--var reciever_id = $('meta[name=user-id]').attr("content"); -->
 
