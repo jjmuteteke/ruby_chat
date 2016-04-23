@@ -21,7 +21,7 @@
     <%= link_to "<i class='fa  fa-times'></i> ".html_safe, "#", class: "gcloseChat", "data-cid" => @gconversation.id %>
   </div>
 </div>
-<%= render 'groupconversations/addusers' %>
+
 <div class="gchatboxcontent">
   <% if @gmessages.any? %>
       <%= render @gmessages %>
