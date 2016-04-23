@@ -1,5 +1,7 @@
 module GroupmessagesHelper
     def gself_or_other(message)
+      puts message.user
+      puts current_user
     message.user == current_user ? "self" : "other"
   end
 
