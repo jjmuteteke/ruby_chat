@@ -77,7 +77,11 @@ var ready = function() {
       formData:        formm,
       paramName:        'file', // S3 does not like nested name fields i.e. name="user[avatar_url]"
       dataType:         'XML',  // S3 returns XML if success_action_status is set to 201
-      replaceFileInput: false
+      replaceFileInput: false,
+      done: function(e, data) {
+          console.log("done");
+            console.log(url)
+      }
          });
          
     });
