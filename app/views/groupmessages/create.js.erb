@@ -1,4 +1,4 @@
-<!--publishes to the conversation path-->
+<!--publishes to the groupconversation path-->
 <!--group chat -->
 <!-- the receiver id line -->
 <% publish_to @gpath do %>
@@ -7,13 +7,13 @@
     var sender_id = "<%= @groupmessage.user.id %>";
     <!--var reciever_id = $('meta[name=user-id]').attr("content"); -->
 
-    chatbox.append("<%= j render( partial: @groupmessage ) %>");
-    chatbox.scrollTop(chatbox[0].scrollHeight);
+    gchatbox.append("<%= j render( partial: @groupmessage ) %>");
+    gchatbox.scrollTop(gchatbox[0].scrollHeight);
 
     
-        chatBox.chatWith(id);
-        chatbox.children().last().removeClass("self").addClass("other");
-        chatbox.scrollTop(chatbox[0].scrollHeight);
-        chatBox.notify();
+        gchatBox.chatWith(id);
+        gchatbox.children().last().removeClass("self").addClass("other");
+        gchatbox.scrollTop(chatbox[0].scrollHeight);
+        gchatBox.notify();
     
 <% end %>
