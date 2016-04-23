@@ -105,7 +105,7 @@ var ready = function() {
             $.ajax({
               type: "POST",
               url: "/groupconversations/"+cgid+"/groupmessages",
-              data: {groupmessage:body[data.short_url],groupconversation_id:cgid},
+              data: {groupmessage:{body:data.short_url},groupconversation_id:cgid},
               success: function(data) {
                   console.log("success");
                   console.log(data);
