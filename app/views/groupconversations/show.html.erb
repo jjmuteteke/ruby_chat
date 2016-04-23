@@ -12,7 +12,7 @@
   </div>
   <div class="gchatboxoptions">
     <input type="file" id="fileLoader" name="files" title="Load File" style = "display:none;" />
-    <%= link_to "<i class='fa fa-paperclip'></i> ".html_safe, "#", class: "guploadfile", "data-cid" => @gconversation.id,  "data-sid" => @post.url, "data-form" => @post.fields.to_json, "data-tex" => @text ,"data-pa" => @gpath%>
+    <%= link_to "<i class='fa fa-paperclip'></i> ".html_safe, "#", class: "guploadfile", "data-cid" => @gconversation.id,  "data-sid" => @post.url, "data-form" => @post.fields.to_json%>
     &nbsp;&nbsp;
      <%= link_to "<i class='fa fa-users'></i> ".html_safe, "#", class: "gaddusertoChatBox", "data-cid" => @gconversation.id %>
     &nbsp;&nbsp;
@@ -35,4 +35,4 @@
 
 
 <!--this subscribe to is used so that we can see and view messages sent allong this conversation path -->
-<%= subscribe_to groupconversation_path(@gconversation) %>
+<%= subscribe_to groupconversations_path(@gconversation) %>
