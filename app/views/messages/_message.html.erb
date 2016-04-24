@@ -5,7 +5,7 @@
   </div>
   <div class="chatboxmessagecontent">
     <% if isitLink?(message.body) %>
-      <p><a href="<%= message.body %>"><%= message.body %></a></p>
+      <p><a href="<%= message.body %>"><u><%= message.body %></u></a></p>
     <% else %>
       <p><%= message.body %></p>
     <% end %>

@@ -13,4 +13,14 @@ module GroupmessagesHelper
     message.user
     
   end   
+  
+  #checks if a string is a link
+  def isitLink?(message)
+   uri = URI.parse(message)
+  %w( http https ).include?(uri.scheme)
+  rescue URI::BadURIError
+    false
+  rescue URI::InvalidURIError
+    false
+  end
 end
