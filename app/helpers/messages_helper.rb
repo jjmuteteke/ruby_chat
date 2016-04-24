@@ -11,5 +11,14 @@ module MessagesHelper
 
   def message_interlocutor(message)
     message.user == message.conversation.sender ? message.conversation.sender : message.conversation.recipient
-  end   
+  end
+  #checks if a string is a link
+  def isitLink?(message)
+   uri = URI.parse(message)
+  %w( http https ).include?(uri.scheme)
+  rescue URI::BadURIError
+    false
+  rescue URI::InvalidURIError
+    false
+  end
 end
