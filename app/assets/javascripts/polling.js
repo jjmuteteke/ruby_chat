@@ -2,4 +2,4 @@
 
 setTimeout(function() {
 console.log("boom");
-}, 2000);
+}, 2);
