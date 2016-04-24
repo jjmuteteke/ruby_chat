@@ -15,7 +15,7 @@ module GroupmessagesHelper
   end   
   
   #checks if a string is a link
-  def isitLink?(message)
+  def gisitLink?(message)
    uri = URI.parse(message)
   %w( http https ).include?(uri.scheme)
   rescue URI::BadURIError
