@@ -5,10 +5,10 @@
     <img src="http://placehold.it/50x50" />
   </div>
   <div class="chatboxmessagecontent">
-    <% if gisitLink?(message.body) %>
-      <p><a href="<%= message.body %>"><u><%= message.body %></u></a></p>
+    <% if gisitLink?(groupmessage.body) %>
+      <p><a href="<%= groupmessage.body %>"><u><%= groupmessage.body %></u></a></p>
     <% else %>
-      <p><%= message.body %></p>
+      <p><%= groupmessage.body %></p>
     <% end %>
     <time datetime="<%= groupmessage.created_at %>" title="<%= groupmessage.created_at.strftime("%d %b  %Y at %I:%M%p") %>">
       <%= gmessage_interlocutor(groupmessage).name %> • <%= groupmessage.created_at.strftime("%H:%M %p") %>
