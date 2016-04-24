@@ -225,18 +225,18 @@ var ready = function() {
               url: "/conversations/"+ccgid+"/messages",
               data: {message:{body:data.short_url},conversation_id:ccgid},
               success: function(data) {
-                  console.log("success");
+                  console.log("success in  posting messages to messages conversations");
                   console.log(data);
                   },
                   error: function(data) {
-            console.log("error");
+            console.log("error in posting messages to messages conversations");
             console.log(data);
         }
         });
             
         },
         error: function(data) {
-            console.log("error");
+            console.log("error can't get searchusers in conversations");
             console.log(data);
         }
         });
