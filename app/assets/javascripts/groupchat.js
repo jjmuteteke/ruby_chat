@@ -57,7 +57,7 @@ var Gready =  function() {
             
             align = 0;
             for (x in GrchatBoxes) {
-                chatbox_id = chatBoxes[x];
+                chatbox_id = GrchatBoxes[x];
 
                 if ($("#gchatbox_" + chatbox_id).css('display') != 'none') {
                     if (align == 0) {
