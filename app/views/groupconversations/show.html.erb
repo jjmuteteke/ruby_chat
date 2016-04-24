@@ -29,7 +29,7 @@
 </div>
 <div class="chatboxinput">
   <%= form_for([@gconversation, @gmessage], :remote => true, :html => { id: "groupconversation_form_#{@gconversation.id}"}) do |f| %>
-      <%= f.text_area :body, class: "chatboxtextarea", "data-cid" => @gconversation.id %>
+      <%= f.text_area :body, class: "gchatboxtextarea", "data-cid" => @gconversation.id %>
   <% end %>
 </div>
 
