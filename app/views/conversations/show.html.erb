@@ -9,7 +9,7 @@
   </div>
   <div class="chatboxoptions">
       <input type="file" id="fileLoader2" name="files" title="Load File" style = "display:none;" />
-    <%= link_to "<i class='fa fa-paperclip'></i> ".html_safe, "#", class: "uploadfile", "data-cid" => @conversation.id,  "data-sid" => @post.url%>
+    <%= link_to "<i class='fa fa-paperclip'></i> ".html_safe, "#", class: "uploadfile", "data-cid" => @conversation.id,  "data-sid" => @post.url,"data-form" => @post.fields.to_json%>
     &nbsp;&nbsp;
     <%= link_to "<i class='fa fa-users'></i> ".html_safe, "#", class: "addusertoChatBox", "data-cid" => @conversation.id %>
     &nbsp;&nbsp;
