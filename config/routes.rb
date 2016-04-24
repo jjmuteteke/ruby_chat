@@ -17,6 +17,9 @@ Rails.application.routes.draw do
 
   resources :conversations do
     resources :messages
+    collection do
+      get 'searchUsers'
+    end
   end
   
   resources :groupconversations do
