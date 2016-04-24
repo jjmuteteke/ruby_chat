@@ -145,10 +145,110 @@ var ready = function() {
            $('#fileLoader').click();
      });
      
-    $(document).on('click', '.adduser', function (e) {
+     $(document).on('click', '.uploadfile', function (e) {
+         //var fileInput    = $('input:file');
+         console.log("uploadfilefam");
+        
+        console.log("lol")
+            curl = $(this).data('sid');
+         cformm = $(this).data('form');
+         ctex = $(this).data('tex');
+         ccgid =  $(this).data('cid');
+         console.log("pre-click")
+         console.log(ctex)
+         // console.log( formm);
+         // console.log(url);
+           $('#fileLoader2').click();
+     });
+      $(document).on('click', '#fileLoader2', function (e) {
+        /*
+        console.log("lkok");
+        var fileInput = $( "input:file" );
+        console.log(fileInput)
+        var url = $(this).data('url');
+        //var formm = $(this).data('form');
+        console.log("lol");
+        console.log(url);
+        */
+        
+        console.log("tits")
+        console.log(curl)
+        console.log(cformm)
+        console.log(typeof(formm))
+        var id = $(this).data("cid");
+        
+        /*
+        $.get("groupconversations/" + id, function (data) {
+               console.log("lol")
+               console.log(data.url);
+               console.log(data.fields);
+            }, "json");
+            */
+       //console.log(formm);
+          var fileInput = $( "input:file" );
+          
+         fileInput.fileupload({
+             fileInput: fileInput,
+             url: curl,
+             type:            'POST',
+      autoUpload:       true,
+      formData:        cformm,
+      paramName:        'file', // S3 does not like nested name fields i.e. name="user[avatar_url]"
+      dataType:         'XML',  // S3 returns XML if success_action_status is set to 201
+      replaceFileInput: false,
+      done: function(e, data) {
+          /*
+          console.log("done");
+            console.log(tex)
+            var filename = $('input[type=file]').val().split('\\').pop();
+            console.log(filename)
+        console.log("done again");
+        var ffilen = filename+"?";
+        var ftx = tex+ffilen
+        console.log(ftx);
+        */
+        var filename = $('input[type=file]').val().split('\\').pop();
+        
+             $.ajax({
+            
+            
+        url:  '/conversations/searchUsers',
+        data: {idd:ccgid,filename:filename},
+        dataType:'json',
+        success: function(data) {
+            //$('#gchatbox_' + gcid).load('/groupconversations/'+gcid +' #gchatbox_' + gcid);
+            console.log("lollllg");
+            console.log(data);
+            console.log(data.short_url);
+            $.ajax({
+              type: "POST",
+              url: "/conversations/"+ccgid+"/messages",
+              data: {message:{body:data.short_url},conversation_id:ccgid},
+              success: function(data) {
+                  console.log("success");
+                  console.log(data);
+                  },
+                  error: function(data) {
+            console.log("error");
+            console.log(data);
+        }
+        });
+            
+        },
+        error: function(data) {
+            console.log("error");
+            console.log(data);
+        }
+        });
+      }
+         });
+         
+    });
+    $(document).on('click', '.gadduser', function (e) {
         e.preventDefault();
         
         var gcid = $(this).data('cid');
+        $('#addusers1').hide();
         /*
         var vv = $("#searchbar").val();
         alert(id + "bubu " + vv);
@@ -187,6 +287,7 @@ var ready = function() {
         success: function(data) {
             //$('#gchatbox_' + gcid).load('/groupconversations/'+gcid +' #gchatbox_' + gcid);
             console.log(data);
+            $('.searchbartype').tokenfield('destroy');
         },
         error: function(data) {
             console.log(data);
@@ -198,11 +299,63 @@ var ready = function() {
         //reset search bar to blank or remove it
     });
     
+    $(document).on('click', '.adduser', function (e) {
+        e.preventDefault();
+        
+        var gcid = $(this).data('cid');
+        $('#addusers2_'+gcid).hide();
+        /*
+        var vv = $("#searchbar").val();
+        alert(id + "bubu " + vv);
+        */
+        //tokenfield('destroy');
+        var currentG = $(this).data('rip'); //recipientid
+        var my_id = $(this).data('sid')
+        
+        alert(currentG + "|| " + gcid + "|| " + my_id);
+        var tagged_user = $('.isearchbartype').tokenfield('getTokens');
+        var pres = []
+        var pores = []
+        
+        pres.push(currentG)
+        pres.push(my_id)
+        alert("done" + " " + tagged_user[0]);
+        alert(tagged_user.length);
+        if(tagged_user.length > 0)
+        {
+            //do the stuff
+            for (i=0; i < tagged_user.length; i++) {
+                pres.push(tagged_user[i].value)
+                
+            }
+          
+            
+            pres.sort();
+            pores = pres.map(Number);
+            alert(pores)
+                  $.post("/groupconversations", { groupuserarray: pores }, function (data) {
+                   
+            gchatBox.chatWith(data.groupconversation_id);
+            $('.isearchbartype').tokenfield('destroy');
+            $('#addusers2_'+gcid).tokenfield('destroy');
+        });
+            
+        }
+         
+        //reset search bar to blank or remove it
+    });
     
+     $(document).on('click', '.isearchbartype', function (event) {
+
+        var id = $(this).data('cid');
+        alert("istouch");
+       $('.isearchbartype').focus();
+       
+     });
     $(document).on('click', '.searchbartype', function (event) {
 
         var id = $(this).data('cid');
-        
+         alert("stouch");
        $('.searchbartype').focus();
         /*
         var datta;
@@ -241,6 +394,7 @@ var ready = function() {
 
             });
             */
+            /*
         $('.searchbartype').typeahead('destroy');
        var engine = new Bloodhound({
            
@@ -287,7 +441,7 @@ var ready = function() {
          * autocomplete is used to autocomplete the searchbar
          * source tells use were the data is comming from
          */
-         
+         /*
        $('.searchbartype').tokenfield({
    typeahead: [ {
                 hint: false,
@@ -302,8 +456,8 @@ var ready = function() {
         if (token.value === event.attrs.value)
             event.preventDefault();
     });
-    
-});
+    */
+//});
 
  
         /*
@@ -378,7 +532,145 @@ var ready = function() {
         e.preventDefault();
 
         var id = $(this).data('cid');
-        chatBox.toggleChatBoxGrowth(id);
+       // $('#addusers').html('<%= escape_javascript(render :partial => "groupconversations/addusers") %>');
+       $('#addusers1').show();
+               $('.searchbartype').typeahead('destroy');
+       var engine = new Bloodhound({
+           
+           prefetch: {
+           
+            url: '/groupconversations/'+id+'.json',
+              ttl: 0,
+              catche: false,
+            
+            transform: function (response) {
+                //console.log(response);
+                var tagged_user = $('.searchbartype').tokenfield('getTokens');
+                return $.map(response, function (user) {
+                    var exists = false;
+                    for (i=0; i < tagged_user.length; i++) {
+                        console.log(user.id);
+                        console.log("inside loop");
+                        if (user.id == tagged_user[i].value) {
+                            var exists = true;
+                        }
+                    }
+                    if (!exists) {
+                        return {
+                            
+                            label: user.name,
+                            value: user.id
+                        };
+                    }
+                });
+            }
+            
+        },
+      datumTokenizer: function (d) {
+          console.log(d.label);
+          console.log("inside datum");
+            return Bloodhound.tokenizers.whitespace(d.label);
+        },
+        
+        queryTokenizer: Bloodhound.tokenizers.whitespace
+       });
+  
+       engine.initialize(true);
+         /**
+         * autocomplete is used to autocomplete the searchbar
+         * source tells use were the data is comming from
+         */
+         
+       $('.searchbartype').tokenfield({
+   typeahead: [ {
+                hint: false,
+                 highlight: true,
+                 minLength: 1
+            }, {name:"users",
+                displayKey: 'label',
+                source: engine.ttAdapter() }]
+}).on('tokenfield:createtoken', function (event) {
+    var existingTokens = $(this).tokenfield('getTokens');
+    $.each(existingTokens, function(index, token) {
+        if (token.value === event.attrs.value)
+            event.preventDefault();
+    });
+    
+});
+    });
+    /*
+    does the same thing as the one above just for the user conversation
+    */
+     $(document).on('click', '.addusertoChatBox', function (e) {
+        e.preventDefault();
+
+        var id = $(this).data('cid');
+       // $('#addusers').html('<%= escape_javascript(render :partial => "groupconversations/addusers") %>');
+       $('#addusers2_'+id).show();
+               $('.isearchbartype').typeahead('destroy');
+               $('.isearchbartype').focus();
+       var engine = new Bloodhound({
+           
+           prefetch: {
+           
+            url: '/conversations/'+id+'.json',
+              ttl: 0,
+              catche: false,
+            
+            transform: function (response) {
+                //console.log(response);
+                var tagged_user = $('.isearchbartype').tokenfield('getTokens');
+                return $.map(response, function (user) {
+                    var exists = false;
+                    for (i=0; i < tagged_user.length; i++) {
+                        console.log(user.id);
+                        console.log("inside loop");
+                        if (user.id == tagged_user[i].value) {
+                            var exists = true;
+                        }
+                    }
+                    if (!exists) {
+                        return {
+                            
+                            label: user.name,
+                            value: user.id
+                        };
+                    }
+                });
+            }
+            
+        },
+      datumTokenizer: function (d) {
+          console.log(d.label);
+          console.log("inside datum");
+            return Bloodhound.tokenizers.whitespace(d.label);
+        },
+        
+        queryTokenizer: Bloodhound.tokenizers.whitespace
+       });
+  
+       engine.initialize(true);
+         /**
+         * autocomplete is used to autocomplete the searchbar
+         * source tells use were the data is comming from
+         */
+         
+       $('.isearchbartype').tokenfield({
+   typeahead: [ {
+                hint: false,
+                 highlight: true,
+                 minLength: 1
+            }, {name:"users",
+                displayKey: 'label',
+                source: engine.ttAdapter() }]
+}).on('tokenfield:createtoken', function (event) {
+    var existingTokens = $(this).tokenfield('getTokens');
+    $.each(existingTokens, function(index, token) {
+        if (token.value === event.attrs.value)
+            event.preventDefault();
+    });
+    
+});
     });
     /**
      * Used to minimize the chatbox
@@ -399,8 +691,9 @@ var ready = function() {
 
     $(document).on('click', '.closeChat', function (e) {
         e.preventDefault();
-
         var id = $(this).data('cid');
+        $('#addusers2_'+id).hide();
+        
         chatBox.close(id);
     });
 
@@ -457,6 +750,7 @@ var ready = function() {
         e.preventDefault();
 
         var id = $(this).data('cid');
+        $('#addusers').hide();
         gchatBox.close(id);
     });
 

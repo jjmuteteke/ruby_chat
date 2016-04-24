@@ -3,10 +3,10 @@
 
 <div class="custom-search-input">
                 <div class="input-group">
-                    <input type="text" class="form-control input-sm searchbartype" id="searchbar-typehead" placeholder="Buscar" autofocus data-cid ="<%=@gconversation.id %>" />
+                    <input type="text" class="form-control input-sm isearchbartype" id="searchbar-typehead" placeholder="Buscar" autofocus data-cid ="<%=@conversation.id %>" />
                     <div class="results" id="search-results"></div>
                     <span class="input-group-btn">
-                        <button class="btn btn-info btn-lg gadduser" type="button" data-rip = "<%=@gconversation.groupuserarray %>" data-cid ="<%=@gconversation.id %>" data-sid= <%=current_user.id%> >
+                        <button class="btn btn-info btn-lg adduser" type="button" data-rip = "<%=@conversation.recipient_id %>" data-cid ="<%=@conversation.id %>" data-sid= <%=current_user.id%> >
                             <i class="fa fa-search-plus"></i> 
                             
                         </button>

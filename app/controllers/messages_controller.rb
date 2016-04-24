@@ -6,6 +6,7 @@ class MessagesController < ApplicationController
     #builds a message for the specific conversation
   def create
     @conversation = Conversation.find(params[:conversation_id])
+    @conversation.touch(:updated_at)
     @message = @conversation.messages.build(message_params)
     @message.user_id = current_user.id
     @message.save!

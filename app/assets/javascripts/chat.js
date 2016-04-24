@@ -110,7 +110,9 @@ var ready = function() {
             //this checks if the chat box already has messages if it does then the length would be > 0
             //if so then it simply makes it pop up and then restructures if needed be
             //then it focuses it and return to stop there
+            console.log($("#chatbox_" + conversation_id).length)
             if ($("#chatbox_" + conversation_id).length > 0) {
+                console.log(">0");
                 if ($("#chatbox_" + conversation_id).css('display') == 'none') {
                     $("#chatbox_" + conversation_id).css('display', 'block');
                     //alert("yo");

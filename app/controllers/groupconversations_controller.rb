@@ -60,11 +60,18 @@ class GroupconversationsController < ApplicationController
     
     
   end
+  
+  def adduserrs
+    respond_to do |format|
+      format.js
+    end
+    
+  end
   def searchUsers
    #@userChoicer = User.all.select("id","name")
    filen = params[:filename]
    idd = params[:idd]
-    @oobject = S3_BUCKET.objects["#{idd}/#{current_user.id}/#{filen}"]
+    @oobject = S3_BUCKET.objects["gc/#{idd}/#{current_user.id}/#{filen}"]
     @text = @oobject.url_for(:get, { :expires => 20.minutes.from_now, :secure => true }).to_s
     client = Bitly.client
     @url = client.shorten(@text)
@@ -88,7 +95,7 @@ class GroupconversationsController < ApplicationController
   end
   
    def set_s3_direct_post
-    @post = S3_BUCKET.presigned_post(key: "#{params[:id]}/#{current_user.id}/${filename}", success_action_status: '201', acl: 'public-read')
+    @post = S3_BUCKET.presigned_post(key: "gc/#{params[:id]}/#{current_user.id}/${filename}", success_action_status: '201', acl: 'public-read')
     #@oobject = S3_BUCKET.objects["#{params[:id]}/#{current_user.id}/"]
     #@text = @oobject.url_for(:get, { :expires => 20.minutes.from_now, :secure => true }).to_s
 =begin    

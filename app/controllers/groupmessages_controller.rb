@@ -5,6 +5,7 @@ class GroupmessagesController < ApplicationController
     #builds a message for the specific conversation
   def create
     @groupconversation = Groupconversation.find(params[:groupconversation_id])
+    @groupconversation.touch(:updated_at)
     @groupmessage = @groupconversation.groupmessages.build(message_params)
     @groupmessage.user_id = current_user.id
     @groupmessage.save!

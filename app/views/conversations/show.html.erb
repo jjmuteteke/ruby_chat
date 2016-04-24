@@ -8,25 +8,19 @@
     <h1><%= @reciever.name %> </h1>
   </div>
   <div class="chatboxoptions">
-    <%= link_to "<i class='fa fa-users'></i> ".html_safe, "#", class: "addusertoChatBox", "data-cid" => @conversation.id , "data-pa" => conversation_path(@conversation)%>
+      <input type="file" id="fileLoader2" name="files" title="Load File" style = "display:none;" />
+    <%= link_to "<i class='fa fa-paperclip'></i> ".html_safe, "#", class: "uploadfile", "data-cid" => @conversation.id,  "data-sid" => @post.url,"data-form" => @post.fields.to_json%>
+    &nbsp;&nbsp;
+    <%= link_to "<i class='fa fa-users'></i> ".html_safe, "#", class: "addusertoChatBox", "data-cid" => @conversation.id %>
     &nbsp;&nbsp;
     <%= link_to "<i class='fa  fa-minus'></i> ".html_safe, "#", class: "toggleChatBox", "data-cid" => @conversation.id %>
     &nbsp;&nbsp;
     <%= link_to "<i class='fa  fa-times'></i> ".html_safe, "#", class: "closeChat", "data-cid" => @conversation.id %>
   </div>
 </div>
-<!--
-<div id="custom-search-input">
-                <div class="input-group">
-                    <input type="text" class="form-control input-lg" placeholder="Buscar" />
-                    <span class="input-group-btn">
-                        <button class="btn btn-info btn-lg" type="button">
-                            <i class="glyphicon glyphicon-search"></i>
-                        </button>
-                    </span>
-                </div>
-            </div>
-            -->
+<div class = "addusers2" id="addusers2_<%=@conversation.id%>" >
+<%= render 'conversations/addusers' %>
+</div>
 <div class="chatboxcontent">
   <% if @messages.any? %>
       <%= render @messages %>

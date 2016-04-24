@@ -23,5 +23,12 @@ class Conversation < ActiveRecord::Base
     scope :between, -> (sender_id,recipient_id) do
         where("(conversations.sender_id = ? AND conversations.recipient_id =?) OR (conversations.sender_id = ? AND conversations.recipient_id =?)", sender_id,recipient_id, recipient_id, sender_id)
     end
+    
+    scope :availableUsers, ->(sen_id,rec_id) do
+        ary = Array.new 
+        ary.push(sen_id)
+        ary.push(rec_id)
+     User.where.not(id: ary)
+    end
   
 end
