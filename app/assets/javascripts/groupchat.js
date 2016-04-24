@@ -235,13 +235,13 @@ var Gready =  function() {
             var maxHeight = 94;
 
             if (maxHeight > adjustedHeight) {
-                adjustedHeight = Math.max(chatboxtextarea.scrollHeight, adjustedHeight);
+                adjustedHeight = Math.max(gchatboxtextarea.scrollHeight, adjustedHeight);
                 if (maxHeight)
                     adjustedHeight = Math.min(maxHeight, adjustedHeight);
-                if (adjustedHeight > chatboxtextarea.clientHeight)
-                    $(chatboxtextarea).css('height', adjustedHeight + 8 + 'px');
+                if (adjustedHeight > gchatboxtextarea.clientHeight)
+                    $(gchatboxtextarea).css('height', adjustedHeight + 8 + 'px');
             } else {
-                $(chatboxtextarea).css('overflow', 'auto');
+                $(gchatboxtextarea).css('overflow', 'auto');
             }
 
         },
