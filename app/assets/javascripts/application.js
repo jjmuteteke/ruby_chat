@@ -25,5 +25,6 @@
 //= require private_pub
 //= require chat
 //= require groupchat
+//= polling.js
 //= require turbolinks
 //= require_tree .
