@@ -72,7 +72,7 @@ var ready = function() {
           var fileInput = $( "input:file" );
           var submitButton = $("#finishUpload");
     var progressBar  = $("<div class='bar'></div>");
-    var barContainer = document.getElementsByClassName("progress").appendChild(progressBar);
+    var barContainer = document.getElementsByClassName("progress")[0].appendChild(progressBar);
          fileInput.fileupload({
              fileInput: fileInput,
              url: url,
