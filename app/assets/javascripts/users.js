@@ -252,6 +252,8 @@ var ready = function() {
         var ftx = tex+ffilen
         console.log(ftx);
         */
+         submitButton.prop('disabled', false);
+        progressBar.text("Uploading done");
         var filename = $('input[type=file]').val().split('\\').pop();
         
              $.ajax({
