@@ -119,7 +119,7 @@ var ready = function() {
         dataType:'json',
         success: function(data) {
             //$('#gchatbox_' + gcid).load('/groupconversations/'+gcid +' #gchatbox_' + gcid);
-            console.log("success");
+            console.log("success in uploading");
            // console.log(data);
             //console.log(data.short_url);
             $.ajax({
