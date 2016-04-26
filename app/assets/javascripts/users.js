@@ -127,11 +127,11 @@ var ready = function() {
               url: "/groupconversations/"+cgid+"/groupmessages",
               data: {groupmessage:{body:data.short_url},groupconversation_id:cgid},
               success: function(data) {
-                  console.log("success");
+                  console.log("success in posting group message");
                  // console.log(data);
                   },
                   error: function(data) {
-            console.log("error");
+            console.log("error in posting group message");
            // console.log(data);
         }
         });
@@ -151,6 +151,7 @@ var ready = function() {
           text("Failed");
       }
          });
+         fileInput.fileupload("destroy");
          
     });
     /*
@@ -213,7 +214,9 @@ var ready = function() {
             */
        //console.log(formm);
           var fileInput = $( "input:file" );
-          
+          var submitButton = $("#finishUpload");
+    var progressBar  = $("<div class='bar'></div>");
+    var barContainer = $(".progress").append(progressBar);
          fileInput.fileupload({
              fileInput: fileInput,
              url: curl,
@@ -223,6 +226,20 @@ var ready = function() {
       paramName:        'file', // S3 does not like nested name fields i.e. name="user[avatar_url]"
       dataType:         'XML',  // S3 returns XML if success_action_status is set to 201
       replaceFileInput: false,
+      progress: function (e, data) {
+        var progress = parseInt(data.loaded / data.total * 100, 10);
+        progressBar.css('width', progress + '%')
+      },
+        start: function (e) {
+            $('#fileuploadModal').modal('show');
+        submitButton.prop('disabled', true);
+
+        progressBar.
+          css('background', 'green').
+          css('display', 'block').
+          css('width', '0%').
+          text("Loading...");
+      },
       done: function(e, data) {
           /*
           console.log("done");
@@ -267,8 +284,16 @@ var ready = function() {
             //console.log(data);
         }
         });
+      },
+        fail: function(e, data) {
+        submitButton.prop('disabled', false);
+
+        progressBar.
+          css("background", "red").
+          text("Failed");
       }
          });
+         fileInput.fileupload('destroy');   
          
     });
     $(document).on('click', '.gadduser', function (e) {
