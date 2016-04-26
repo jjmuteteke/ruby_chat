@@ -152,7 +152,7 @@ var ready = function() {
           text("Failed");
       }
          });
-         fileInput.fileupload("destroy");
+         //fileInput.fileupload("destroy");
          
     });
     /*
