@@ -68,7 +68,7 @@ var ready = function() {
             */
        //console.log(formm);
        //show modal
-        $('#fileuploadModal').modal('show');
+        
           var fileInput = $( "input:file" );
           var submitButton = $("#finishUpload");
     var progressBar  = $("<div class='bar'></div>");
@@ -82,11 +82,12 @@ var ready = function() {
       paramName:        'file', // S3 does not like nested name fields i.e. name="user[avatar_url]"
       dataType:         'XML',  // S3 returns XML if success_action_status is set to 201
       replaceFileInput: false,
-      progressall: function (e, data) {
+      progress: function (e, data) {
         var progress = parseInt(data.loaded / data.total * 100, 10);
         progressBar.css('width', progress + '%')
       },
         start: function (e) {
+            $('#fileuploadModal').modal('show');
         submitButton.prop('disabled', true);
 
         progressBar.
