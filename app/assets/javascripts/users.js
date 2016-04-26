@@ -53,10 +53,10 @@ var ready = function() {
         console.log(url);
         */
         
-       // console.log("tits")
-       /// console.log(url)
-       // console.log(formm)
-        //console.log(typeof(formm))
+        console.log("tits")
+        console.log(url)
+        console.log(formm)
+        console.log(typeof(formm))
         var id = $(this).data("cid");
         
         /*
@@ -174,9 +174,9 @@ var ready = function() {
      
      $(document).on('click', '.uploadfile', function (e) {
          //var fileInput    = $('input:file');
-         console.log("uploadfilefam");
+        // console.log("uploadfilefam");
         
-        console.log("lol")
+        //console.log("lol")
             curl = $(this).data('sid');
          cformm = $(this).data('form');
          ctex = $(this).data('tex');
@@ -801,6 +801,11 @@ var ready = function() {
         gchatBox.checkInputKey(event, $(this), id);
     });
 
+     $(document).on('click', '.removebar', function (e) {
+          //var progressBar  = $("<div class='bar'></div>");
+          $(".bar").remove();
+         
+     });
     /**
      * When a conversation link is clicked show up the respective
      * conversation chatbox
