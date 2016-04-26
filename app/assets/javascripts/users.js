@@ -67,8 +67,12 @@ var ready = function() {
             }, "json");
             */
        //console.log(formm);
+       //show modal
+        $('#fileuploadModal').modal('show');
           var fileInput = $( "input:file" );
-          
+          var submitButton = $("#finishUpload");
+    var progressBar  = $("<div class='bar'></div>");
+    var barContainer = $("<div class='progress'></div>").append(progressBar);
          fileInput.fileupload({
              fileInput: fileInput,
              url: url,
@@ -78,6 +82,19 @@ var ready = function() {
       paramName:        'file', // S3 does not like nested name fields i.e. name="user[avatar_url]"
       dataType:         'XML',  // S3 returns XML if success_action_status is set to 201
       replaceFileInput: false,
+      progressall: function (e, data) {
+        var progress = parseInt(data.loaded / data.total * 100, 10);
+        progressBar.css('width', progress + '%')
+      },
+        start: function (e) {
+        submitButton.prop('disabled', true);
+
+        progressBar.
+          css('background', 'green').
+          css('display', 'block').
+          css('width', '0%').
+          text("Loading...");
+      },
       done: function(e, data) {
           /*
           console.log("done");
@@ -89,6 +106,8 @@ var ready = function() {
         var ftx = tex+ffilen
         console.log(ftx);
         */
+        submitButton.prop('disabled', false);
+        progressBar.text("Uploading done");
         var filename = $('input[type=file]').val().split('\\').pop();
         
              $.ajax({
@@ -122,6 +141,13 @@ var ready = function() {
            // console.log(data);
         }
         });
+      },
+         fail: function(e, data) {
+        submitButton.prop('disabled', false);
+
+        progressBar.
+          css("background", "red").
+          text("Failed");
       }
          });
          

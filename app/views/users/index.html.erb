@@ -115,7 +115,7 @@
   <div class="col-md-4">
 
   </div>
-<!-- Modal -->
+<!-- Modal for adding users-->
 <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -148,6 +148,29 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary start-group" data-sid ="<%=current_user.id %>" >Done</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for progress bars and progress-->
+<div class="modal fade" id="fileuploadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">create group chat</h4>
+      </div>
+      <div class="modal-body">
+        
+         <div class='progress'>
+           
+         </div>
+       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal",id="finishUpload">Close</button>
+        
       </div>
     </div>
   </div>
