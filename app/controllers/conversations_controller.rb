@@ -50,7 +50,7 @@ class ConversationsController < ApplicationController
     current_user == conversation.recipient ? conversation.sender : conversation.recipient
   end
   def set_s3_direct_post
-    @post = S3_BUCKET.presigned_post(key: "c/#{params[:id]}/#{current_user.id}/${filename}", success_action_status: '201', acl: 'public-read')
+    @post = S3_BUCKET.presigned_post(key: "convo/#{params[:id]}/#{current_user.id}/${filename}", success_action_status: '201', acl: 'public-read')
     #@oobject = S3_BUCKET.objects["#{params[:id]}/#{current_user.id}/"]
     #@text = @oobject.url_for(:get, { :expires => 20.minutes.from_now, :secure => true }).to_s
 =begin    
