@@ -50,7 +50,7 @@ var ready = function() {
          */
 
         restructure: function () {
-            
+            /*
             align = 0;
             for (x in chatBoxes) {
                 chatbox_id = chatBoxes[x];
@@ -65,14 +65,16 @@ var ready = function() {
                     align++;
                 }
             }
+            */
             
-            /*
             align = 0;
-            var merger = $.merge(chatBoxes,GrchatBoxes)
-            for (x in chatBoxes) {
-                chatbox_id = chatBoxes[x];
+            //var merger = $.merge(chatBoxes,GrchatBoxes)
+            //console.log(allChatBoxes.length)
+           // console.log("+++++++++++++++++")
+            for (x in allChatBoxes) {
+                chatbox_id = allChatBoxes[x];
 
-                if ($("#chatbox_" + chatbox_id).css('display') != 'none') {
+                if ($("#chatbox_" + chatbox_id).css('display') != 'none'  && $("#chatbox_" + chatbox_id).css('display') != undefined) {
                     if (align == 0) {
                         $("#chatbox_" + chatbox_id).css('right', '20px');
                     } else {
@@ -80,8 +82,10 @@ var ready = function() {
                         $("#chatbox_" + chatbox_id).css('right', width + 'px');
                     }
                     align++;
+                   // console.log(align);
+                  //  console.log("hhhhhhhhhhhhhh" + " " + chatbox_id)
                 }
-                else if ($("#gchatbox_" + chatbox_id).css('display') != 'none') {
+                 if ($("#gchatbox_" + chatbox_id).css('display') != 'none' && $("#gchatbox_" + chatbox_id).css('display') != undefined) {
                     if (align == 0) {
                         $("#gchatbox_" + chatbox_id).css('right', '20px');
                     } else {
@@ -89,9 +93,11 @@ var ready = function() {
                         $("#gchatbox_" + chatbox_id).css('right', width + 'px');
                     }
                     align++;
+                   // console.log(align);
+                   // console.log("GGGGGGGGGGGGGGGGGGG" + " " + chatbox_id)
                 }
             }
-            */
+            
         },
         
         /**
@@ -110,9 +116,14 @@ var ready = function() {
             //this checks if the chat box already has messages if it does then the length would be > 0
             //if so then it simply makes it pop up and then restructures if needed be
             //then it focuses it and return to stop there
-            console.log($("#chatbox_" + conversation_id).length)
+            //console.log("length in create");
+            //console.log($("#chatbox_" + conversation_id).length)
+            //console.log("minize")
+            //console.log(minimizeChatBox)
+            //console.log("global")
+            //console.log(allChatBoxes.length)
             if ($("#chatbox_" + conversation_id).length > 0) {
-                console.log(">0");
+              //  console.log(">0");
                 if ($("#chatbox_" + conversation_id).css('display') == 'none') {
                     $("#chatbox_" + conversation_id).css('display', 'block');
                     //alert("yo");
@@ -143,13 +154,35 @@ var ready = function() {
 
             chatBoxeslength = 0;
             //loops through all chatboxex to see which ones are not up
+            /*
             for (x in chatBoxes) {
                 if ($("#chatbox_" + chatBoxes[x]).css('display') != 'none') {
                     chatBoxeslength++;
                 }
             }
+            */
+              for (x in allChatBoxes) {
+                if ($("#gchatbox_" + allChatBoxes[x]).css('display') != 'none' && $("#gchatbox_" + allChatBoxes[x]).css('display') != undefined) {
+                    chatBoxeslength++;
+                    //console.log("test1"+" "+ allChatBoxes[x]);
+                    rt = $("#gchatbox_" + allChatBoxes[x]).css('display')
+                    //console.log(rt)
+                    
+                }
+                 if ($("#chatbox_" + allChatBoxes[x]).css('display') != 'none'&& $("#chatbox_" + allChatBoxes[x]).css('display') != undefined) {
+                    chatBoxeslength++;
+                   // console.log("test2"+" "+ allChatBoxes[x])
+                    rt = $("#chatbox_" + allChatBoxes[x]).css('display')
+                  //  console.log(rt)
+                }
+            }
             //if chatboxlength is 0 shift to right by 20px
             //else shift by specific px
+            //console.log("cbl")
+            //console.log(conversation_id)
+            //console.log(chatBoxeslength)
+            //console.log(allChatBoxes.length)
+            //console.log("////////////////////////////")
             if (chatBoxeslength == 0) {
                 $("#chatbox_" + conversation_id).css('right', '20px');
             } else {
@@ -157,11 +190,19 @@ var ready = function() {
                 $("#chatbox_" + conversation_id).css('right', width + 'px');
             }
 
-            chatBoxes.push(conversation_id);
+            //chatBoxes.push(conversation_id);
+            allT.push(conversation_id)
+             allChatBoxes = allT.filter(function(elem, pos) {
+    return allT.indexOf(elem) == pos;
+  }); 
+            //console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
+            //console.log(allChatBoxes.length)
+            //console.log(allChatBoxes[0])
+            //console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
             //it seems to minimize a chatbox
             if (minimizeChatBox == 1) {
                 minimizedChatBoxes = new Array();
-
+                console.log("mini");
                 if (Cookies.get('chatbox_minimized')) {
                     minimizedChatBoxes = Cookies.get('chatbox_minimized').split(/\|/);
                 }
@@ -178,7 +219,7 @@ var ready = function() {
                 }
             }
 
-            chatboxFocus[conversation_id] = false;
+            //chatboxFocus[conversation_id] = false;
             //the blur line checks if the specific chatbox has lost focus
             //if so it changes it id in focus array tofalse
             //it removes the CSS class
@@ -186,17 +227,18 @@ var ready = function() {
             //it focus on the chatbox then it adds and removes classes
             //at click it simply does the function when clicked
             $("#chatbox_" + conversation_id + " .chatboxtextarea").blur(function () {
-                chatboxFocus[conversation_id] = false;
+                //chatboxFocus[conversation_id] = false;
                 $("#chatbox_" + conversation_id + " .chatboxtextarea").removeClass('chatboxtextareaselected');
             }).focus(function () {
-                chatboxFocus[conversation_id] = true;
+               // chatboxFocus[conversation_id] = true;
                 $('#chatbox_' + conversation_id + ' .chatboxhead').removeClass('chatboxblink');
                 $("#chatbox_" + conversation_id + " .chatboxtextarea").addClass('chatboxtextareaselected');
             });
 
             $("#chatbox_" + conversation_id).click(function () {
                 if ($('#chatbox_' + conversation_id + ' .chatboxcontent').css('display') != 'none') {
-                    $("#chatbox_" + conversation_id + " .chatboxtextarea").focus();
+                    //$("#chatbox_" + conversation_id + " .chatboxtextarea").focus();
+                    //alert("in create")
                 }
             });
             //after click it shows 

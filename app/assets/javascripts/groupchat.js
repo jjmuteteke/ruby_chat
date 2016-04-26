@@ -54,7 +54,7 @@ var Gready =  function() {
          */
 
         restructure: function () {
-            
+            /*
             align = 0;
             for (x in GrchatBoxes) {
                 chatbox_id = GrchatBoxes[x];
@@ -69,14 +69,14 @@ var Gready =  function() {
                     align++;
                 }
             }
+            */
             
-            /*
             align = 0;
-            var merger = $.merge(chatBoxes,GrchatBoxes)
-            for (x in merger) {
-                chatbox_id = merger[x];
+            //var merger = $.merge(chatBoxes,GrchatBoxes)
+            for (x in allChatBoxes) {
+                chatbox_id = allChatBoxes[x];
 
-                if ($("#chatbox_" + chatbox_id).css('display') != 'none') {
+                if ($("#chatbox_" + chatbox_id).css('display') != 'none' && $("#chatbox_" + chatbox_id).css('display') != undefined) {
                     if (align == 0) {
                         $("#chatbox_" + chatbox_id).css('right', '20px');
                     } else {
@@ -85,7 +85,7 @@ var Gready =  function() {
                     }
                     align++;
                 }
-                else if ($("#gchatbox_" + chatbox_id).css('display') != 'none') {
+                 if ($("#gchatbox_" + chatbox_id).css('display') != 'none'  && $("#gchatbox_" + chatbox_id).css('display') != undefined) {
                     if (align == 0) {
                         $("#gchatbox_" + chatbox_id).css('right', '20px');
                     } else {
@@ -95,7 +95,7 @@ var Gready =  function() {
                     align++;
                 }
             }
-            */
+            
         },
         
         /**
@@ -117,10 +117,10 @@ var Gready =  function() {
             if ($("#gchatbox_" + groupconversation_id).length > 0) {
                 if ($("#gchatbox_" + groupconversation_id).css('display') == 'none') {
                     $("#gchatbox_" + groupconversation_id).css('display', 'block');
-                    alert("gyo");
+                   // alert("gyo");
                     gchatBox.restructure();
                 }
-                $("#gchatbox_" + groupconversation_id + " .chatboxtextarea").focus();
+                $("#gchatbox_" + groupconversation_id + " .gchatboxtextarea").focus();
                 return;
             }
                 //this simply goes and appends to the html body
@@ -145,13 +145,34 @@ var Gready =  function() {
 
             gchatBoxeslength = 0;
             //loops through all chatboxex to see which ones are not up
+            /*
             for (x in GrchatBoxes) {
                 if ($("#gchatbox_" + GrchatBoxes[x]).css('display') != 'none') {
                     gchatBoxeslength++;
                 }
             }
+            */
+            for (x in allChatBoxes) {
+                if ($("#gchatbox_" + allChatBoxes[x]).css('display') != 'none'  && $("#gchatbox_" + allChatBoxes[x]).css('display') != undefined) {
+                    gchatBoxeslength++;
+                    //console.log("test3"+" "+ allChatBoxes[x]);
+                    rt = $("#gchatbox_" + allChatBoxes[x]).css('display')
+                   // console.log(rt)
+                }
+                 if ($("#chatbox_" + allChatBoxes[x]).css('display') != 'none' && $("#chatbox_" + allChatBoxes[x]).css('display') != undefined) {
+                    gchatBoxeslength++;
+                   // console.log("test2"+" "+ allChatBoxes[x])
+                    rt = $("#chatbox_" + allChatBoxes[x]).css('display')
+                   // console.log(rt)
+                    
+                }
+            }
             //if chatboxlength is 0 shift to right by 20px
             //else shift by specific px
+            //console.log("gcbl")
+           //console.log(groupconversation_id)
+            //console.log(gchatBoxeslength)
+            //console.log("////////////////////////////////")
             if (gchatBoxeslength == 0) {
                 $("#gchatbox_" + groupconversation_id).css('right', '20px');
             } else {
@@ -159,7 +180,12 @@ var Gready =  function() {
                 $("#gchatbox_" + groupconversation_id).css('right', width + 'px');
             }
 
-            GrchatBoxes.push(groupconversation_id);
+            //GrchatBoxes.push(groupconversation_id);
+            //allChatBoxes.push(groupconversation_id)
+             allT.push(groupconversation_id)
+             allChatBoxes = allT.filter(function(elem, pos) {
+    return allT.indexOf(elem) == pos;
+  }); 
             //it seems to minimize a chatbox
             if (gminimizeChatBox == 1) {
                 gminimizedChatBoxes = new Array();
@@ -180,25 +206,25 @@ var Gready =  function() {
                 }
             }
 
-            GrchatboxFocus[groupconversation_id] = false;
+            //GrchatboxFocus[groupconversation_id] = false;
             //the blur line checks if the specific chatbox has lost focus
             //if so it changes it id in focus array tofalse
             //it removes the CSS class
             //you can deduce what happes at focus
             //it focus on the chatbox then it adds and removes classes
             //at click it simply does the function when clicked
-            $("#gchatbox_" + groupconversation_id + " .chatboxtextarea").blur(function () {
-                GrchatboxFocus[groupconversation_id] = false;
-                $("#gchatbox_" + groupconversation_id + " .chatboxtextarea").removeClass('chatboxtextareaselected');
+            $("#gchatbox_" + groupconversation_id + " .gchatboxtextarea").blur(function () {
+                //GrchatboxFocus[groupconversation_id] = false;
+                $("#gchatbox_" + groupconversation_id + " .gchatboxtextarea").removeClass('chatboxtextareaselected');
             }).focus(function () {
-                GrchatboxFocus[groupconversation_id] = true;
-                $('#gchatbox_' + groupconversation_id + ' .chatboxhead').removeClass('chatboxblink');
-                $("#gchatbox_" + groupconversation_id + " .chatboxtextarea").addClass('chatboxtextareaselected');
+                //GrchatboxFocus[groupconversation_id] = true;
+                $('#gchatbox_' + groupconversation_id + ' .gchatboxhead').removeClass('chatboxblink');
+                $("#gchatbox_" + groupconversation_id + " .gchatboxtextarea").addClass('chatboxtextareaselected');
             });
 
             $("#gchatbox_" + groupconversation_id).click(function () {
                 if ($('#gchatbox_' + groupconversation_id + ' .chatboxcontent').css('display') != 'none') {
-                    $("#gchatbox_" + groupconversation_id + " .chatboxtextarea").focus();
+                    //$("#gchatbox_" + groupconversation_id + " .chatboxtextarea").focus();
                 }
             });
             //after click it shows 

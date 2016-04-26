@@ -53,10 +53,10 @@ var ready = function() {
         console.log(url);
         */
         
-        console.log("tits")
-        console.log(url)
-        console.log(formm)
-        console.log(typeof(formm))
+       // console.log("tits")
+       /// console.log(url)
+       // console.log(formm)
+        //console.log(typeof(formm))
         var id = $(this).data("cid");
         
         /*
@@ -99,27 +99,27 @@ var ready = function() {
         dataType:'json',
         success: function(data) {
             //$('#gchatbox_' + gcid).load('/groupconversations/'+gcid +' #gchatbox_' + gcid);
-            console.log("lollllg");
-            console.log(data);
-            console.log(data.short_url);
+            console.log("success");
+           // console.log(data);
+            //console.log(data.short_url);
             $.ajax({
               type: "POST",
               url: "/groupconversations/"+cgid+"/groupmessages",
               data: {groupmessage:{body:data.short_url},groupconversation_id:cgid},
               success: function(data) {
                   console.log("success");
-                  console.log(data);
+                 // console.log(data);
                   },
                   error: function(data) {
             console.log("error");
-            console.log(data);
+           // console.log(data);
         }
         });
             
         },
         error: function(data) {
             console.log("error");
-            console.log(data);
+           // console.log(data);
         }
         });
       }
@@ -131,15 +131,15 @@ var ready = function() {
     */
      $(document).on('click', '.guploadfile', function (e) {
          //var fileInput    = $('input:file');
-         console.log("uploadfilefam");
+        // console.log("uploadfilefam");
         
-        console.log("lol")
+       // console.log("lol")
             url = $(this).data('sid');
          formm = $(this).data('form');
          tex = $(this).data('tex');
          cgid =  $(this).data('cid');
-         console.log("pre-click")
-         console.log(tex)
+        // console.log("pre-click")
+        // console.log(tex)
          // console.log( formm);
          // console.log(url);
            $('#fileLoader').click();
@@ -154,8 +154,8 @@ var ready = function() {
          cformm = $(this).data('form');
          ctex = $(this).data('tex');
          ccgid =  $(this).data('cid');
-         console.log("pre-click")
-         console.log(ctex)
+        // console.log("pre-click")
+        // console.log(ctex)
          // console.log( formm);
          // console.log(url);
            $('#fileLoader2').click();
@@ -171,10 +171,10 @@ var ready = function() {
         console.log(url);
         */
         
-        console.log("tits")
-        console.log(curl)
-        console.log(cformm)
-        console.log(typeof(formm))
+       // console.log("tits")
+       // console.log(curl)
+        //console.log(cformm)
+        //console.log(typeof(formm))
         var id = $(this).data("cid");
         
         /*
@@ -217,27 +217,27 @@ var ready = function() {
         dataType:'json',
         success: function(data) {
             //$('#gchatbox_' + gcid).load('/groupconversations/'+gcid +' #gchatbox_' + gcid);
-            console.log("lollllg");
-            console.log(data);
-            console.log(data.short_url);
+          //  console.log("lollllg");
+          //  console.log(data);
+           // console.log(data.short_url);
             $.ajax({
               type: "POST",
               url: "/conversations/"+ccgid+"/messages",
               data: {message:{body:data.short_url},conversation_id:ccgid},
               success: function(data) {
                   console.log("success in  posting messages to messages conversations");
-                  console.log(data);
+                  //console.log(data);
                   },
                   error: function(data) {
             console.log("error in posting messages to messages conversations");
-            console.log(data);
+           // console.log(data);
         }
         });
             
         },
         error: function(data) {
             console.log("error can't get searchusers in conversations");
-            console.log(data);
+            //console.log(data);
         }
         });
       }
@@ -248,7 +248,7 @@ var ready = function() {
         e.preventDefault();
         
         var gcid = $(this).data('cid');
-        $('#addusers1').hide();
+        $('#addusers1_'+gcid).hide();
         /*
         var vv = $("#searchbar").val();
         alert(id + "bubu " + vv);
@@ -256,14 +256,14 @@ var ready = function() {
         var currentG = $(this).data('rip');
         var my_id = $(this).data('sid')
         
-        alert(currentG + "|| " + gcid + "|| " + my_id);
+        //alert(currentG + "|| " + gcid + "|| " + my_id);
         var tagged_user = $('.searchbartype').tokenfield('getTokens');
         var pres = []
         var pores = []
         var thiss = []
         
-        alert("done" + " " + tagged_user[0]);
-        alert(tagged_user.length);
+       // alert("done" + " " + tagged_user[0]);
+        //alert(tagged_user.length);
         if(tagged_user.length > 0)
         {
             //do the stuff
@@ -278,7 +278,7 @@ var ready = function() {
             pres.push(my_id)
             pres.sort();
             pores = pres.map(Number);
-            alert(pores)
+            //alert(pores)
               $.ajax({
             
             type: 'PUT',
@@ -286,11 +286,11 @@ var ready = function() {
         data: {groupuserarray: pores, newGuys:thiss},
         success: function(data) {
             //$('#gchatbox_' + gcid).load('/groupconversations/'+gcid +' #gchatbox_' + gcid);
-            console.log(data);
+            console.log("error");
             $('.searchbartype').tokenfield('destroy');
         },
         error: function(data) {
-            console.log(data);
+            console.log("error");
         }
         });
             
@@ -337,7 +337,7 @@ var ready = function() {
                    
             gchatBox.chatWith(data.groupconversation_id);
             $('.isearchbartype').tokenfield('destroy');
-            $('#addusers2_'+gcid).tokenfield('destroy');
+            //$('#addusers2_'+gcid).tokenfield('destroy');
         });
             
         }
@@ -515,11 +515,19 @@ var ready = function() {
                 value.sort()    
                 fValue = value.map(Number)    
                  
+                 if(fValue.length >= 3 && fValue[0] != 0)
+                 {
+                     
                  
                  $.post("/groupconversations", { groupuserarray: fValue }, function (data) {
                    
             gchatBox.chatWith(data.groupconversation_id);
         });
+                 }
+                 else
+                 {
+                     alert("a group needs to be 3 or more people")
+                 }
         $('#uploadModal').modal('hide');
     });
     
@@ -533,7 +541,7 @@ var ready = function() {
 
         var id = $(this).data('cid');
        // $('#addusers').html('<%= escape_javascript(render :partial => "groupconversations/addusers") %>');
-       $('#addusers1').show();
+       $('#addusers1_'+id).show();
                $('.searchbartype').typeahead('destroy');
        var engine = new Bloodhound({
            
@@ -549,8 +557,8 @@ var ready = function() {
                 return $.map(response, function (user) {
                     var exists = false;
                     for (i=0; i < tagged_user.length; i++) {
-                        console.log(user.id);
-                        console.log("inside loop");
+                       // console.log(user.id);
+                        //console.log("inside loop");
                         if (user.id == tagged_user[i].value) {
                             var exists = true;
                         }
@@ -567,8 +575,8 @@ var ready = function() {
             
         },
       datumTokenizer: function (d) {
-          console.log(d.label);
-          console.log("inside datum");
+          //console.log(d.label);
+          //console.log("inside datum");
             return Bloodhound.tokenizers.whitespace(d.label);
         },
         
@@ -623,8 +631,8 @@ var ready = function() {
                 return $.map(response, function (user) {
                     var exists = false;
                     for (i=0; i < tagged_user.length; i++) {
-                        console.log(user.id);
-                        console.log("inside loop");
+                      //  console.log(user.id);
+                      //  console.log("inside loop");
                         if (user.id == tagged_user[i].value) {
                             var exists = true;
                         }
@@ -641,8 +649,8 @@ var ready = function() {
             
         },
       datumTokenizer: function (d) {
-          console.log(d.label);
-          console.log("inside datum");
+         // console.log(d.label);
+         // console.log("inside datum");
             return Bloodhound.tokenizers.whitespace(d.label);
         },
         
@@ -750,7 +758,7 @@ var ready = function() {
         e.preventDefault();
 
         var id = $(this).data('cid');
-        $('#addusers').hide();
+        $('#addusers1_'+id).hide();
         gchatBox.close(id);
     });
 

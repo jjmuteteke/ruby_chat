@@ -18,8 +18,8 @@ class Groupconversation < ActiveRecord::Base
               
          # end
          #added the ::int[] to type cast the groupuserarray
-         Groupconversation.joins(:users).where(:users => {:id => groupuserarray}).uniq.where('groupuserarray @> ARRAY[?]::int[]', groupuserarray)
-    
+         #Groupconversation.joins(:users).where(:users => {:id => groupuserarray}).uniq.where('groupuserarray = ARRAY[?]::int[]', groupuserarray)
+           Groupconversation.uniq.where('groupuserarray = ARRAY[?]::int[]', groupuserarray)   
         
     end
     

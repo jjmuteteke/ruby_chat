@@ -33,6 +33,7 @@ gem 'httparty'
 gem 'jquery-fileupload-rails'
 gem 'bootstrap_tokenfield_rails'
 gem 'bitly', '~> 0.9.0'
+gem 'redis'
 #file upload
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 # Use ActiveModel has_secure_password
