@@ -312,15 +312,15 @@ var ready = function() {
         var currentG = $(this).data('rip'); //recipientid
         var my_id = $(this).data('sid')
         
-        alert(currentG + "|| " + gcid + "|| " + my_id);
+       // alert(currentG + "|| " + gcid + "|| " + my_id);
         var tagged_user = $('.isearchbartype').tokenfield('getTokens');
         var pres = []
         var pores = []
         
         pres.push(currentG)
         pres.push(my_id)
-        alert("done" + " " + tagged_user[0]);
-        alert(tagged_user.length);
+        //alert("done" + " " + tagged_user[0]);
+        //alert(tagged_user.length);
         if(tagged_user.length > 0)
         {
             //do the stuff
@@ -348,14 +348,14 @@ var ready = function() {
      $(document).on('click', '.isearchbartype', function (event) {
 
         var id = $(this).data('cid');
-        alert("istouch");
+        //alert("istouch");
        $('.isearchbartype').focus();
        
      });
     $(document).on('click', '.searchbartype', function (event) {
 
         var id = $(this).data('cid');
-         alert("stouch");
+         //alert("stouch");
        $('.searchbartype').focus();
         /*
         var datta;
