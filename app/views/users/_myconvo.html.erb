@@ -1,28 +1,28 @@
 <!-- partial to show conversations -->
 <div style="height: 400px; overflow-y: auto;">
-      <% if @conversations.any? and @groupconversations.any? %>
+      <% if @co.any? and @gco.any? %>
           <ul class="media-list">
-            <% @conversations.each do |conversation| %>
+            <% @co.each do |conversation| %>
                  <%= sync partial: 'user_listconvo', resource: conversation %>
 
             <% end %>
-            <% @groupconversations.each do |conversation| %>
+            <% @gco.each do |conversation| %>
                 <%= sync partial: 'user_listgconvo', resource: conversation %>
 
             <% end %>
           </ul>
           
-      <% elsif @groupconversations.any? %>
+      <% elsif @gco.any? %>
           <ul class="media-list">
-            <% @groupconversations.each do |conversation| %>
+            <% @gco.each do |conversation| %>
                 <%= sync partial: 'user_listgconvo', resource: conversation %>
 
             <% end %>
           </ul>
           
-       <% elsif @conversations.any?  %>
+       <% elsif @co.any?  %>
           <ul class="media-list">
-            <% @conversations.each do |conversation| %>
+            <% @co.each do |conversation| %>
                 <%= sync partial: 'user_listconvo', resource: conversation %>
 
             <% end %>
