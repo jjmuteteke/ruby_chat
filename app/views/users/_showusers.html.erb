@@ -12,7 +12,7 @@
           </thead>
           <tbody>
           <% @users.each_with_index do |user| %>
-              <%= sync partial: 'listuser', resource: user %>
+              <%= sync render: 'listuser', resource: user %>
           <% end %>
 
           </tbody>
