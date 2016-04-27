@@ -11,8 +11,8 @@
           </tr>
           </thead>
           <tbody>
-          <% @users.each_with_index do |user,index| %>
- <%= sync partial: 'user_listusers', resource: {user,index} %>
+          <% @users.each do |user| %>
+ <%= sync partial: 'user_listusers', resource: {:user =>user,:index =>index} %>
  
  <% end %>
 
