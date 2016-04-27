@@ -53,10 +53,10 @@ var ready = function() {
         console.log(url);
         */
         
-        console.log("tits")
-        console.log(url)
-        console.log(formm)
-        console.log(typeof(formm))
+        //console.log("tits")
+        //console.log(url)
+        //console.log(formm)
+        //console.log(typeof(formm))
         var id = $(this).data("cid");
         
         /*
@@ -387,7 +387,7 @@ var ready = function() {
             
             pres.sort();
             pores = pres.map(Number);
-            alert(pores)
+            //alert(pores)
                   $.post("/groupconversations", { groupuserarray: pores }, function (data) {
                    
             gchatBox.chatWith(data.groupconversation_id);
