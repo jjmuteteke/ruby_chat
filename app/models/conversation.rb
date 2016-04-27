@@ -10,7 +10,7 @@ class Conversation < ActiveRecord::Base
     has_many :messages, dependent: :destroy
     #each conversation has a folder
     #each folder row will have a foreign id linking it to a conversation
-    has_one :folder
+    
     #makes sure that the sender recipient id conversations are unique
     validates_uniqueness_of :sender_id, :scope => :recipient_id
     

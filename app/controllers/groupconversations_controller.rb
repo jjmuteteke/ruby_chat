@@ -1,7 +1,7 @@
 class GroupconversationsController < ApplicationController
     before_filter :authenticate_user!, :only => [:index]
     before_action :set_s3_direct_post, only: [:show]
-     enable_sync 
+    
     #skip_before_filter :authenticate_user! , :only => [:index]
   layout false
    respond_to :json

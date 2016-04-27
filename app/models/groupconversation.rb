@@ -4,7 +4,7 @@ class Groupconversation < ActiveRecord::Base
     
     #conversation has many messages
     #depedent destroy means that all things associated with this conversation will be removed if this conversation is removed
-     has_one :groupfolders
+     
     has_many :groupmessages, dependent: :destroy
     
     #this scope checks wether a group conversation exists between this user and the array of selected group members

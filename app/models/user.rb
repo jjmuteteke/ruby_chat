@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   has_many :usergroups
   has_many :groupconversations, through: :usergroups
   #a user can have multiple files
-  has_many :assets
+  
   
   
 end
