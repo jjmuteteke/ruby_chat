@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     before_filter :authenticate_user!
-
+    enable_sync 
   def index
       @fusers = User.all
       @users = User.where.not("id = ?",current_user.id).order("created_at DESC")

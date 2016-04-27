@@ -1,0 +1,19 @@
+  <!-- Default panel contents -->
+        <div class="panel-heading">Registered Users</div>
+
+        <!-- Table -->
+        <table class="table">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @users.each_with_index do |user, index| %>
+              <%= sync partial: 'listuser', resource: {user,index} %>
+          <% end %>
+
+          </tbody>
+        </table>

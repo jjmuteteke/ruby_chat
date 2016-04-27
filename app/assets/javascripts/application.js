@@ -26,6 +26,7 @@
 //= require chat
 //= require groupchat
 //= require polling
+//= require sync
 //= require globalAr
 //= require turbolinks
 //= require_tree .
