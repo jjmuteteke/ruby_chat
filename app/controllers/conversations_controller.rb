@@ -4,7 +4,7 @@ class ConversationsController < ApplicationController
     before_filter :authenticate_user!
    before_action :set_s3_direct_post, only: [:show]
   layout false
-
+   enable_sync 
     #checks if converstation between sender and recipient is available if not create in database
   def create
     if Conversation.between(params[:sender_id],params[:recipient_id]).present?
