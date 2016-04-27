@@ -12,7 +12,7 @@
           </thead>
           <tbody>
           <% @users.each_with_index do |user, index| %>
-              <%= sync partial: 'listuser', :resource => {user,index} %>
+              <%= sync render :partial => 'listuser', :resource => {user,index} %>
           <% end %>
 
           </tbody>
