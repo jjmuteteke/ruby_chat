@@ -11,10 +11,29 @@
           </tr>
           </thead>
           <tbody>
-          <% @users.each_with_index do |user,index| %>
- <%= sync partial: 'user_listusers', :resource => {:user => user, :index => index} %>
- 
- <% end %>
+          <% @users.each_with_index do |user, index| %>
+              <tr>
+                <td><%= index +=1 %></td>
+                <td><%= user.name %></td>
+                <td>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-danger">Actions</button>
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+                      <span class="caret"></span>
+                      <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                      <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation",
+                              "data-sid" => current_user.id, "data-rip" => user.id %>
+                      
+                              
+                    </ul>
+                  </div>
+                  
+                  
+                </td>
+              </tr>
+          <% end %>
 
           </tbody>
         </table>

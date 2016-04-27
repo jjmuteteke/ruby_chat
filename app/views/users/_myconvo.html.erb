@@ -3,25 +3,11 @@
       <% if @conversations.any? and @groupconversations.any? %>
           <ul class="media-list">
             <% @conversations.each do |conversation| %>
-                <li class="media">
-                  <%= image_tag("http://placehold.it/50x50", class: "media-object pull-left") %>
-                  <div class="media-body">
-                    <%= link_to "", conversation_path(conversation), class: "conversation", "data-cid" => conversation.id %>
-                        <h4 class="media-heading"><%= conversation_interlocutor(conversation).name %></h4>
-                        <p><%= conversation.messages.last.nil? ? "No messages" : truncate(conversation.messages.last.body, length: 45) %></p>
-                  </div>
-                </li>
+                 <%= sync partial: 'user_listconvo', resource: conversation %>
 
             <% end %>
             <% @groupconversations.each do |conversation| %>
-                <li class="media">
-                  <%= image_tag("http://placehold.it/50x50", class: "media-object pull-left") %>
-                  <div class="media-body">
-                    <%= link_to "", groupconversation_path(conversation), class: "groupconversation", "data-cid" => conversation.id %>
-                        <h4 class="media-heading"><%= grconversation_interlocutor(conversation) %></h4>
-                        <p><%= conversation.groupmessages.last.nil? ? "No messages" : truncate(conversation.groupmessages.last.body, length: 45) %></p>
-                  </div>
-                </li>
+                <%= sync partial: 'user_listgconvo', resource: conversation %>
 
             <% end %>
           </ul>
@@ -29,14 +15,7 @@
       <% elsif @groupconversations.any? %>
           <ul class="media-list">
             <% @groupconversations.each do |conversation| %>
-                <li class="media">
-                  <%= image_tag("http://placehold.it/50x50", class: "media-object pull-left") %>
-                  <div class="media-body">
-                    <%= link_to "", groupconversation_path(conversation), class: "groupconversation", "data-cid" => conversation.id %>
-                        <h4 class="media-heading"><%= grconversation_interlocutor(conversation) %></h4>
-                        <p><%= conversation.groupmessages.last.nil? ? "No messages" : truncate(conversation.groupmessages.last.body, length: 45) %></p>
-                  </div>
-                </li>
+                <%= sync partial: 'user_listgconvo', resource: conversation %>
 
             <% end %>
           </ul>
@@ -44,14 +23,7 @@
        <% elsif @conversations.any?  %>
           <ul class="media-list">
             <% @conversations.each do |conversation| %>
-                <li class="media">
-                  <%= image_tag("http://placehold.it/50x50", class: "media-object pull-left") %>
-                  <div class="media-body">
-                    <%= link_to "", conversation_path(conversation), class: "conversation", "data-cid" => conversation.id %>
-                        <h4 class="media-heading"><%= conversation_interlocutor(conversation).name %></h4>
-                        <p><%= conversation.messages.last.nil? ? "No messages" : truncate(conversation.messages.last.body, length: 45) %></p>
-                  </div>
-                </li>
+                <%= sync partial: 'user_listconvo', resource: conversation %>
 
             <% end %>
           </ul>
