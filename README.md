@@ -7,6 +7,6 @@
     ----------------------------------------------------------------- 
 
 
-Two main problems as of this commit
-one is the group quer where its not returning the right groups
-and the groupchat and regular chat layout
+the two main problems are fixed. the project is done. 
+This project was a basic chat application. THe users could talk to each other or they could form groups to talk to each other.
+There is also file sharing between users.
